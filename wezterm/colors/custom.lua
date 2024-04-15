@@ -36,7 +36,7 @@ local colorscheme = {
    cursor_fg = mocha.crust,
    selection_bg = mocha.surface2,
    selection_fg = mocha.text,
-   ansi = {
+  ansi = {
       '#0C0C0C', -- black
       '#C50F1F', -- red
       '#13A10E', -- green
@@ -55,7 +55,7 @@ local colorscheme = {
       '#B4009E', -- magenta/purple
       '#61D6D6', -- cyan
       '#F2F2F2', -- white
-   },
+   }, 
    tab_bar = {
       background = 'rgba(0, 0, 0, 0.4)',
       active_tab = {
