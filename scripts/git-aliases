@@ -1,0 +1,3 @@
+git config --global alias.aa 'add --all'
+git config --global alias.bb !~/.config/scripts/better-branch.sh
+git config --global alias.c 'git commit'
