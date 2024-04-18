@@ -59,5 +59,5 @@ The `ps` command writes the status of active processes:
 ---
 
 ``` bash
-for f in *; do mv -v "$f" “${f/tokyonight/dunish}”; done;
+for f in *; do mv -v "$f" “${f/wordtoreplace/wordtoreplacewith}”; done;
 ```
