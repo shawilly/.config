@@ -1,31 +1,31 @@
 -- A slightly altered version of catppucchin mocha
 local mocha = {
-   rosewater = '#f5e0dc',
-   flamingo = '#f2cdcd',
-   pink = '#f5c2e7',
-   mauve = '#cba6f7',
-   red = '#f38ba8',
-   maroon = '#eba0ac',
-   peach = '#fab387',
-   yellow = '#f9e2af',
-   green = '#a6e3a1',
-   teal = '#94e2d5',
-   sky = '#89dceb',
-   sapphire = '#74c7ec',
-   blue = '#89b4fa',
-   lavender = '#b4befe',
-   text = '#cdd6f4',
-   subtext1 = '#bac2de',
-   subtext0 = '#a6adc8',
-   overlay2 = '#9399b2',
-   overlay1 = '#7f849c',
-   overlay0 = '#6c7086',
-   surface2 = '#585b70',
-   surface1 = '#45475a',
-   surface0 = '#313244',
-   base = '#1f1f28',
-   mantle = '#181825',
-   crust = '#11111b',
+   rosewater = '#D9C2B6',
+   flamingo = '#D3B2AE',
+   pink = '#D6A7C1',
+   mauve = '#B194CB',
+   red = '#D58C9D',
+   maroon = '#C899A0',
+   peach = '#E1A46E',
+   yellow = '#DFD1A1',
+   green = '#88C98B',
+   teal = '#6DC6BB',
+   sky = '#72B6C8',
+   sapphire = '#5CA0C9',
+   blue = '#7AA5DC',
+   lavender = '#A0A4DF',
+   text = '#9EA7D8',
+   subtext1 = '#8D92C5',
+   subtext0 = '#7B80B2',
+   overlay2 = '#666C80',
+   overlay1 = '#535769',
+   overlay0 = '#404453',
+   surface2 = '#313540',
+   surface1 = '#252632',
+   surface0 = '#1A1A24',
+   base = '#0F0F14',
+   mantle = '#0D0D10',
+   crust = '#09090F',
 }
 
 local colorscheme = {
@@ -45,8 +45,8 @@ local colorscheme = {
       '#8D55A3', -- magenta/purple
       '#539AC8', -- cyan
       '#AFAFAF', -- white
-  },
-  brights = {
+   },
+   brights = {
       '#7C7C7C', -- black
       '#E16F72', -- red
       '#5CC45D', -- green
@@ -55,7 +55,7 @@ local colorscheme = {
       '#C962BE', -- magenta/purple
       '#85E6E6', -- cyan
       '#E5E5E5', -- white
-  },
+   },
    tab_bar = {
       background = 'rgba(0, 0, 0, 0.4)',
       active_tab = {
