@@ -57,3 +57,7 @@ The `ps` command writes the status of active processes:
 - `grep` is used to search files for the occurrence of a string of characters that matches a specified pattern.
 
 ---
+
+``` bash
+for f in *; do mv -v "$f" “${f/tokyonight/dunish}”; done;
+```
