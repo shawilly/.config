@@ -24,19 +24,19 @@ vim.opt.inccommand = 'split'
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
-vim.diagnostic.config({
-	underline = true,
-	signs = true,
-	virtual_text = false,
-	float = {
-		show_header = true,
-		source = 'if_many',
-		border = 'rounded',
-		focusable = false,
-	},
-	update_in_insert = false, -- default to false
-	severity_sort = false, -- default to false
-})
+vim.diagnostic.config {
+  underline = true,
+  signs = true,
+  virtual_text = false,
+  float = {
+    show_header = true,
+    source = 'if_many',
+    border = 'rounded',
+    focusable = false,
+  },
+  update_in_insert = false, -- default to false
+  severity_sort = false, -- default to false
+}
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
@@ -65,15 +65,15 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-	desc = 'Highlight when yanking (copying) text',
-	group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-	callback = function()
-		vim.highlight.on_yank()
-	end,
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
 })
 
 vim.lsp.buf.format {
-	filter = function(client)
-		return client.name ~= 'tsserver'
-	end,
+  filter = function(client)
+    return client.name ~= 'tsserver'
+  end,
 }
