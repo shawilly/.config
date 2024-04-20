@@ -63,14 +63,71 @@ end)
 wezterm.on("update-right-status", function(window, pane)
 	-- "Wed Mar 3 08:14"
 	local date = wezterm.strftime("%a %b %-d %H:%M ")
+	local battery_status = ""
+	local cwd = ""
+	local hostname = ""
 
-	local bat = ""
 	for _, b in ipairs(wezterm.battery_info()) do
-		bat = "🔋 " .. string.format("%.0f%%", b.state_of_charge * 100)
+		local icon = "🔋"
+		local charge_percent = string.format("%.0f%%", b.state_of_charge * 100)
+
+		-- Change icon color based on charge level
+		if b.state_of_charge < 0.2 then
+			icon = "🌑"
+		elseif b.state_of_charge < 0.4 then
+			icon = "🌘"
+		elseif b.state_of_charge < 0.6 then
+			icon = "🌗"
+		elseif b.state_of_charge < 0.8 then
+			icon = "🌖"
+		else
+			icon = "🌕"
+		end
+
+		-- Display charging or discharging state
+		local state_suffix = ""
+		if b.state == "Charging" then
+			state_suffix = " ⚡" -- Lightning bolt icon for charging
+			if b.time_to_full then
+				state_suffix = state_suffix .. " (" .. math.ceil(b.time_to_full / 60) .. " min to full)"
+			end
+		elseif b.state == "Discharging" then
+			if b.time_to_empty then
+				state_suffix = " (" .. math.ceil(b.time_to_empty / 60) .. " min to empty)"
+			end
+		end
+
+		battery_status = battery_status .. icon .. " " .. charge_percent .. state_suffix .. "  "
 	end
 
+	local cwd_uri = pane:get_current_working_dir()
+	if cwd_uri then
+		if type(cwd_uri) == "userdata" then
+			cwd = cwd_uri.file_path
+			hostname = cwd_uri.host or wezterm.hostname()
+		else
+			cwd_uri = cwd_uri:sub(8)
+			local slash = cwd_uri:find("/")
+			if slash then
+				hostname = cwd_uri:sub(1, slash - 1)
+				cwd = cwd_uri:sub(slash):gsub("%%(%x%x)", function(hex)
+					return string.char(tonumber(hex, 16))
+				end)
+			end
+		end
+
+		local dot = hostname:find("[.]")
+		if dot then
+			hostname = hostname:sub(1, dot - 1)
+		end
+		if hostname == "" then
+			hostname = wezterm.hostname()
+		end
+	end
+
+	-- Set the right status with detailed battery info and current time
 	window:set_right_status(wezterm.format({
-		{ Text = bat .. "   " .. date },
+		{ Text = cwd .. "    " .. battery_status .. " " .. date },
 	}))
 end)
 
