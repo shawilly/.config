@@ -10,6 +10,10 @@ keymap.set("n", "-", "<C-x>")
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
+-- Copy and paste from different registers
+keymap.set({ "n", "v" }, "<leader>y", '"+y', opts)
+keymap.set({ "n", "v" }, "<leader>p", '"+p', opts)
+
 -- Save file and quit
 keymap.set("n", "<Leader>w", ":update<Return>", opts)
 keymap.set("n", "<Leader>q", ":quit<Return>", opts)

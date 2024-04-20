@@ -1,14 +1,14 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
+
 vim.o.clipboard = "unnamedplus"
 
 vim.scriptencoding = "utf-8"
+
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
-
 vim.opt.number = true
-
 vim.opt.title = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true

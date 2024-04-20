@@ -1,15 +1,8 @@
-local Config = require('Config')
+local wezterm = require("wezterm")
 
-require('utils.backdrops'):set_files():random()
+local config = {}
 
-require('events.right-status').setup()
-require('events.tab-title').setup()
-require('events.new-tab-button').setup()
+config.font = wezterm.font("Hurmit Nerd Font", { weight = "Bold" })
+config.font_size = 18
 
-return Config:init()
-    :append(require('config.appearance'))
-    :append(require('config.bindings'))
-    :append(require('config.domains'))
-    :append(require('config.fonts'))
-    :append(require('config.general'))
-    :append(require('config.launch')).options
+return config
