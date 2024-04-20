@@ -92,8 +92,8 @@ return {
 					margin = { horizontal = 0 },
 				},
 				render = function(props)
-					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
 					local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
+					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
 					local modified = vim.bo[props.buf].modified
 					local buffer = {
 						ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) }
@@ -180,6 +180,7 @@ return {
 					sorter = "case_sensitive",
 				},
 				view = {
+					side = "right",
 					width = 30,
 					relativenumber = true,
 				},
@@ -194,6 +195,7 @@ return {
 				},
 				log = {
 					enable = true,
+
 					truncate = true,
 					types = {
 						diagnostics = true,
@@ -203,7 +205,6 @@ return {
 					},
 				},
 			})
-
 			if vim.fn.argc(-1) == 0 then
 				vim.cmd("NvimTreeFocus")
 			end
