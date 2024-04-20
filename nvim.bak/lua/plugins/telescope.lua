@@ -59,7 +59,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
     -- Slightly advanced example of overriding default behavior and theme
-    v1a0fbd5c4ee18de2d6e2ffa8a11e7ac3e389b2beim.keymap.set('n', '<leader>/', function()
+    vim.keymap.set('n', '<leader>/', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 10,

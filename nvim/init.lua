@@ -1,12 +1,10 @@
-require 'settings.vim'
+if vim.loader then
+	vim.loader.enable()
+end
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
+_G.dd = function(...)
+	require("util.debug").dump(...)
+end
+vim.print = _G.dd
 
-require('lazy').setup {
-  spec = 'plugins',
-}
+require("config.lazy")

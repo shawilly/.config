@@ -1,9 +1,12 @@
-return { -- `:Telescope colorscheme` to check for installed themes
-  'shawilly/monokai-nightasty.nvim',
-  priority = 1000, -- Make sure to load this before all the other start plugins.
-  opts = {},
-  init = function()
-    vim.cmd.colorscheme 'monokai-nightasty'
-    vim.cmd.hi 'Comment gui=none'
-  end,
+return {
+	{
+		"sainnhe/sonokai",
+		priority = 1000,
+		config = function()
+			vim.g.sonokai_transparent_background = "1"
+			vim.g.sonokai_enable_italic = "1"
+			vim.g.sonokai_style = "andromeda"
+			vim.cmd.colorscheme("sonokai")
+		end,
+	},
 }
