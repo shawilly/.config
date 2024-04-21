@@ -37,42 +37,4 @@ return {
 		},
 		opts = {},
 	},
-
-	--Formatter
-	{
-		"stevearc/conform.nvim",
-		lazy = false,
-
-		keys = {
-			{
-				"<leader>f",
-				function()
-					require("conform").format({ async = true, lsp_fallback = true })
-				end,
-				mode = "",
-				desc = "[F]ormat buffer",
-			},
-		},
-		opts = {
-			notify_on_error = true,
-			formatters_by_ft = {
-				lua = { "stylua" },
-				typescript = { { "prettier", "prettierd" } },
-				typescriptreact = { { "prettier", "prettierd" } },
-				javascript = { { "prettier", "prettierd" } },
-				javascriptreact = { { "prettier", "prettierd" } },
-				json = { { "prettier", "prettierd" } },
-				html = { { "prettier", "prettierd" } },
-				css = { { "prettier", "prettierd" } },
-				python = { "isort", "black" },
-			},
-		},
-	},
-
-	--Tyescript tools
-	{
-		"pmizio/typescript-tools.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = {},
-	},
 }
