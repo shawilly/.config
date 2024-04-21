@@ -39,7 +39,7 @@ return {
 	},
 
 	--Formatter
-	{ -- Formatter
+	{
 		"stevearc/conform.nvim",
 		lazy = false,
 
@@ -67,5 +67,12 @@ return {
 				python = { "isort", "black" },
 			},
 		},
+	},
+
+	--Tyescript tools
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
 	},
 }
