@@ -28,9 +28,20 @@ table.insert(launch_menu, {
 
 config.color_scheme_dirs = { "../../wezterm-dracula/dracula.toml" }
 config.color_scheme = "Dracula (Official)"
+config.window_background_gradient = {
+	orientation = "Vertical",
+	colors = {
+		"#2c2e34",
+		"#2c2e34",
+		"#17181c",
+	},
+	interpolation = "Linear",
+	blend = "Rgb",
+}
 
 config.font = wezterm.font("Hurmit Nerd Font", { weight = "Bold" })
 config.font_size = 18
+config.bold_brightens_ansi_colors = true
 
 config.launch_menu = launch_menu
 config.keys = keys

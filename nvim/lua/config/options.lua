@@ -3,6 +3,7 @@ vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
 vim.o.clipboard = "unnamedplus"
+vim.o.autowriteall = true
 
 vim.scriptencoding = "utf-8"
 
@@ -33,6 +34,4 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.splitkeep = "cursor"
 vim.opt.mouse = ""
-
--- Add asterisks in block comments
-vim.opt.formatoptions:append({ "r" })
+vim.opt.formatoptions:append({ "r" }) -- Add asterisks in block comments
