@@ -39,15 +39,28 @@ config.window_background_gradient = {
 	blend = "Rgb",
 }
 
-config.font = wezterm.font("Hurmit Nerd Font", { weight = "Bold" })
-config.font_size = 18
+config.font = wezterm.font("ProggyClean Nerd Font", { weight = "Bold" })
+config.font_size = 21
 config.bold_brightens_ansi_colors = true
 
 config.launch_menu = launch_menu
 config.keys = keys
 config.mouse_bindings = mouse_bindings
 
-config.use_fancy_tab_bar = false
+config.use_fancy_tab_bar = true
+config.window_frame = {
+	font = wezterm.font({ family = "ProggyClean Nerd Font", weight = "Bold" }),
+	font_size = 20.0,
+	active_titlebar_bg = "#333333",
+	inactive_titlebar_bg = "#333333",
+}
+
+config.colors = {
+	tab_bar = {
+		inactive_tab_edge = "#2c2e34",
+	},
+}
+
 config.automatically_reload_config = true
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
