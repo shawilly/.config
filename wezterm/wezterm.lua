@@ -39,8 +39,8 @@ config.window_background_gradient = {
 	blend = "Rgb",
 }
 
-config.font = wezterm.font("ProggyClean Nerd Font", { weight = "Bold" })
-config.font_size = 21
+config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Bold" })
+config.font_size = 20
 config.bold_brightens_ansi_colors = true
 
 config.launch_menu = launch_menu
