@@ -10,6 +10,11 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"css-lsp",
+				"stylua",
+				"pyright",
+				"selene",
+				"prettier",
+				"prettierd",
 			})
 		end,
 	},
