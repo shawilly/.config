@@ -3,10 +3,17 @@ local act = wezterm.action
 local mux = wezterm.mux
 
 local config = {}
-local mouse_bindings = {}
-local launch_menu = {}
-
 local haswork, work = pcall(require, "work")
+
+local mouse_bindings = {}
+config.mouse_bindings = mouse_bindings
+
+local launch_menu = {}
+table.insert(launch_menu, {
+	label = "Pwsh",
+	args = { "/usr/local/bin/pwsh", "-NoLogo" },
+})
+config.launch_menu = launch_menu
 
 local keys = {
 	-- copy and paste from the standard register
@@ -20,11 +27,7 @@ local keys = {
 	{ key = "[", mods = "SUPER|CTRL", action = act.MoveTabRelative(-1) },
 	{ key = "]", mods = "SUPER|CTRL", action = act.MoveTabRelative(1) },
 }
-
-table.insert(launch_menu, {
-	label = "Pwsh",
-	args = { "/usr/local/bin/pwsh", "-NoLogo" },
-})
+config.keys = keys
 
 config.color_scheme_dirs = { "../../wezterm-dracula/dracula.toml" }
 config.color_scheme = "Dracula (Official)"
@@ -43,14 +46,10 @@ config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Bold" })
 config.font_size = 20
 config.bold_brightens_ansi_colors = true
 
-config.launch_menu = launch_menu
-config.keys = keys
-config.mouse_bindings = mouse_bindings
-
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = fals
 config.window_frame = {
 	font = wezterm.font({ family = "ProggyClean Nerd Font", weight = "Bold" }),
-	font_size = 20.0,
+	font_size = 18.0,
 	active_titlebar_bg = "#333333",
 	inactive_titlebar_bg = "#333333",
 }
@@ -92,8 +91,7 @@ wezterm.on("update-right-status", function(window, pane)
 	local hostname = ""
 
 	for _, b in ipairs(wezterm.battery_info()) do
-		local icon = "🔋"
-		local charge_percent = string.format("%.0f%%", b.state_of_charge * 100)
+		local icon = "🌕"
 
 		-- Change icon color based on charge level
 		if b.state_of_charge < 0.2 then
@@ -104,8 +102,6 @@ wezterm.on("update-right-status", function(window, pane)
 			icon = "🌗"
 		elseif b.state_of_charge < 0.8 then
 			icon = "🌖"
-		else
-			icon = "🌕"
 		end
 
 		-- Display charging or discharging state
@@ -120,6 +116,8 @@ wezterm.on("update-right-status", function(window, pane)
 				state_suffix = " (" .. math.ceil(b.time_to_empty / 60) .. " min to empty)"
 			end
 		end
+
+		local charge_percent = string.format("%.0f%%", b.state_of_charge * 100)
 
 		battery_status = battery_status .. icon .. " " .. charge_percent .. state_suffix .. "  "
 	end
