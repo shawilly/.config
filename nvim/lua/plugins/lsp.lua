@@ -15,6 +15,8 @@ return {
 				"selene",
 				"prettier",
 				"prettierd",
+				"black",
+				"isort",
 			})
 		end,
 	},
@@ -166,12 +168,12 @@ return {
 				html = { { "prettierd", "prettier" } },
 				css = { { "prettierd", "prettier" } },
 				python = { "isort", "black" },
-				tailwindcss = { "rustywind", "prettierd", "prettier" },
+				tailwindcss = { "prettierd", "prettier" },
 			},
 		},
 	},
 
-	--Tyescript tools
+	--Typescript tools
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
