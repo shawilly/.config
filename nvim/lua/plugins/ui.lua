@@ -188,7 +188,6 @@ return {
 					group_empty = true,
 				},
 				filters = {
-					dotfiles = true,
 					custom = {
 						"node_modules/.*",
 					},
