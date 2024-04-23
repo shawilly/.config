@@ -8,7 +8,13 @@ local haswork, work = pcall(require, "work")
 local mouse_bindings = {}
 config.mouse_bindings = mouse_bindings
 
-local launch_menu = {}
+config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
+local launch_menu = {
+	{ label = "Bash", args = { "bash", "-l" } },
+	{ label = "Fish", args = { "/opt/homebrew/bin/fish", "-l" } },
+	{ label = "Nushell", args = { "/opt/homebrew/bin/nu", "-l" } },
+	{ label = "Zsh", args = { "zsh", "-l" } },
+}
 table.insert(launch_menu, {
 	label = "Pwsh",
 	args = { "/usr/local/bin/pwsh", "-NoLogo" },
@@ -46,10 +52,9 @@ config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Bold" })
 config.font_size = 20
 config.bold_brightens_ansi_colors = true
 
-config.use_fancy_tab_bar = fals
+config.use_fancy_tab_bar = true
 config.window_frame = {
-	font = wezterm.font({ family = "ProggyClean Nerd Font", weight = "Bold" }),
-	font_size = 18.0,
+	font_size = 14.0,
 	active_titlebar_bg = "#333333",
 	inactive_titlebar_bg = "#333333",
 }
