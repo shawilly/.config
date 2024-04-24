@@ -54,3 +54,6 @@ keymap.set("n", "<down>", '<cmd>echo "Use j ya idiot"<CR>')
 keymap.set("n", "<C-j>", function()
 	vim.diagnostic.goto_next()
 end, opts)
+
+-- Custom plugins
+vim.keymap.set("n", "<leader>ts", ":TSTools")
