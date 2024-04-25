@@ -198,7 +198,7 @@ return {
 					truncate = true,
 					types = {
 						diagnostics = true,
-						git = true,
+						git = false,
 						profile = true,
 						watcher = true,
 					},
