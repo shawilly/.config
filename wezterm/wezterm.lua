@@ -49,7 +49,7 @@ config.window_background_gradient = {
 }
 
 config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Bold" })
-config.font_size = 20
+config.font_size = 17
 config.bold_brightens_ansi_colors = true
 
 config.use_fancy_tab_bar = true
