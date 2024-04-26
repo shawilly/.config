@@ -191,9 +191,7 @@ return {
 				expose_as_code_action = "all",
 				-- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
 				-- not exists then standard path resolution strategy is applied
-				tsserver_path = function(...)
-					return require("lspconfig.util").root_pattern(".git")(...)
-				end,
+				tsserver_path = nil,
 				-- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
 				-- (see 💅 `styled-components` support section)
 				tsserver_plugins = {},
@@ -220,7 +218,7 @@ return {
 				-- WARNING: it is disabled by default (maybe you configuration or distro already uses nvim-ts-autotag,
 				-- that maybe have a conflict if enable this feature. )
 				jsx_close_tag = {
-					enable = false,
+					enable = true,
 					filetypes = { "javascriptreact", "typescriptreact" },
 				},
 			},
