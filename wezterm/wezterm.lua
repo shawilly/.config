@@ -52,11 +52,11 @@ config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Bold" })
 config.font_size = 17
 config.bold_brightens_ansi_colors = true
 
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = false
 config.window_frame = {
 	font_size = 14.0,
-	active_titlebar_bg = "#333333",
-	inactive_titlebar_bg = "#333333",
+	active_titlebar_bg = "#17181C",
+	inactive_titlebar_bg = "#2c2e34",
 }
 
 config.colors = {
@@ -64,6 +64,17 @@ config.colors = {
 		inactive_tab_edge = "#2c2e34",
 	},
 }
+
+wezterm.log_error("Home " .. wezterm.home_dir)
+
+local background = {
+	{
+		source = { File = { path = wezterm.home_dir .. "/.config/wezterm/assets/night_shift.gif" } },
+		hsb = { brightness = 0.02, saturation = 0.5 },
+	},
+}
+
+config.background = background
 
 config.automatically_reload_config = true
 
