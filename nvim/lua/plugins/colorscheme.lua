@@ -1,4 +1,4 @@
-return {
+local _monokaish = {
 	"sainnhe/sonokai",
 	priority = 1000,
 	config = function()
@@ -8,3 +8,25 @@ return {
 		vim.cmd.colorscheme("sonokai")
 	end,
 }
+
+local _catpuccino = {
+	"Pocco81/Catppuccino.nvim",
+	priority = 1000,
+	config = function()
+		vim.g.catppuccino_style = "dark_catppuccino"
+		vim.cmd.colorscheme("catppuccino")
+	end,
+}
+
+local tokyonight = {
+	"folke/tokyonight.nvim",
+	opts = {
+		transparent = true,
+		styles = {
+			sidebars = "transparent",
+			floats = "transparent",
+		},
+	},
+}
+
+return tokyonight

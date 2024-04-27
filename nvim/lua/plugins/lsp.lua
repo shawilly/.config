@@ -168,7 +168,7 @@ return {
 				json = { { "prettierd", "prettier" } },
 				html = { { "prettierd", "prettier" } },
 				css = { { "prettierd", "prettier" } },
-				python = { "isort", "black" },
+				python = { "black", "isort" },
 				tailwindcss = { "prettierd", "prettier" },
 			},
 		},

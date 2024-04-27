@@ -3,11 +3,8 @@ local act = wezterm.action
 local mux = wezterm.mux
 
 local config = {}
-local haswork, work = pcall(require, "work")
 
-local mouse_bindings = {}
-config.mouse_bindings = mouse_bindings
-
+-- launch and cli tools
 config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
 local launch_menu = {
 	{ label = "Bash", args = { "bash", "-l" } },
@@ -19,22 +16,24 @@ table.insert(launch_menu, {
 	label = "Pwsh",
 	args = { "/usr/local/bin/pwsh", "-NoLogo" },
 })
+
 config.launch_menu = launch_menu
+config.automatically_reload_config = true
 
-local keys = {
-	-- copy and paste from the standard register
-	{ key = "c", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard") },
-	{ key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
-	-- tabs
-	{ key = "t", mods = "SUPER", action = act.SpawnTab("DefaultDomain") },
-	-- tabs: navigation
-	{ key = "[", mods = "SUPER", action = act.ActivateTabRelative(-1) },
-	{ key = "]", mods = "SUPER", action = act.ActivateTabRelative(1) },
-	{ key = "[", mods = "SUPER|CTRL", action = act.MoveTabRelative(-1) },
-	{ key = "]", mods = "SUPER|CTRL", action = act.MoveTabRelative(1) },
+-- background
+local backdrops = require("utils.backdrops")
+require("utils.backdrops"):set_files():random()
+
+config.background = {
+	{
+		source = { File = { path = wezterm.home_dir .. "/.config/wezterm/backdrops/night_shift.gif", speed = 0.2 } },
+		hsb = { brightness = 0.02, saturation = 0.5 },
+	},
 }
-config.keys = keys
 
+local haswork, work = pcall(require, "work")
+
+-- colour
 config.color_scheme_dirs = { "../../wezterm-dracula/dracula.toml" }
 config.color_scheme = "Dracula (Official)"
 config.window_background_gradient = {
@@ -48,35 +47,44 @@ config.window_background_gradient = {
 	blend = "Rgb",
 }
 
+-- font
 config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Bold" })
 config.font_size = 17
 config.bold_brightens_ansi_colors = true
 
+-- tab bar
 config.use_fancy_tab_bar = false
-config.window_frame = {
-	font_size = 14.0,
-	active_titlebar_bg = "#17181C",
-	inactive_titlebar_bg = "#2c2e34",
-}
-
 config.colors = {
 	tab_bar = {
-		inactive_tab_edge = "#2c2e34",
+		background = "#0b0022",
+		active_tab = {
+			bg_color = "#2b2042",
+			fg_color = "#c0c0c0",
+			intensity = "Normal",
+			underline = "None",
+			italic = false,
+			strikethrough = false,
+		},
+		inactive_tab = {
+			bg_color = "#1b1032",
+			fg_color = "#808080",
+		},
+		inactive_tab_hover = {
+			bg_color = "#3b3052",
+			fg_color = "#909090",
+			italic = true,
+		},
+		new_tab = {
+			bg_color = "#1b1032",
+			fg_color = "#808080",
+		},
+		new_tab_hover = {
+			bg_color = "#3b3052",
+			fg_color = "#909090",
+			italic = true,
+		},
 	},
 }
-
-wezterm.log_error("Home " .. wezterm.home_dir)
-
-local background = {
-	{
-		source = { File = { path = wezterm.home_dir .. "/.config/wezterm/assets/night_shift.gif" } },
-		hsb = { brightness = 0.02, saturation = 0.5 },
-	},
-}
-
-config.background = background
-
-config.automatically_reload_config = true
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local palette = config.resolved_palette.tab_bar
@@ -168,5 +176,38 @@ wezterm.on("update-right-status", function(window, pane)
 		{ Text = cwd .. "    " .. battery_status .. " " .. date },
 	}))
 end)
+
+-- mouse (yuck)
+local mouse_bindings = {}
+config.mouse_bindings = mouse_bindings
+
+-- keys (yay)
+local keys = {
+	-- copy and paste from the standard register
+	{ key = "c", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard") },
+	{ key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
+	-- tabs
+	{ key = "t", mods = "SUPER", action = act.SpawnTab("DefaultDomain") },
+	-- tabs: navigation
+	{ key = "[", mods = "SUPER", action = act.ActivateTabRelative(-1) },
+	{ key = "]", mods = "SUPER", action = act.ActivateTabRelative(1) },
+	{ key = "[", mods = "SUPER|CTRL", action = act.MoveTabRelative(-1) },
+	{ key = "]", mods = "SUPER|CTRL", action = act.MoveTabRelative(1) },
+	{
+		key = [[/]],
+		mods = "SUPER|CTRL",
+		action = act.InputSelector({
+			title = "Select Background",
+			choices = backdrops:choices(),
+			fuzzy = true,
+			fuzzy_description = "Select Background: ",
+			action = wezterm.action_callback(function(window, _pane, idx)
+				---@diagnostic disable-next-line: param-type-mismatch
+				backdrops:set_img(window, tonumber(idx))
+			end),
+		}),
+	},
+}
+config.keys = keys
 
 return config
