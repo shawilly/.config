@@ -12,6 +12,7 @@ local launch_menu = {
 	{ label = "Nushell", args = { "/opt/homebrew/bin/nu", "-l" } },
 	{ label = "Zsh", args = { "zsh", "-l" } },
 }
+config.launch_menu = launch_menu
 table.insert(launch_menu, {
 	label = "Pwsh",
 	args = { "/usr/local/bin/pwsh", "-NoLogo" },
