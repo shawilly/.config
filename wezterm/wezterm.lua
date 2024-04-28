@@ -1,8 +1,19 @@
 local wezterm = require("wezterm")
+require("utils.backdrops"):set_files():random()
 local act = wezterm.action
 local mux = wezterm.mux
-
 local config = {}
+
+-- background
+local backdrops = require("utils.backdrops")
+
+-- Set the background image statically
+--config.background = {
+--	{
+--		source = { File = { path = wezterm.home_dir .. "/.config/wezterm/backdrops/night_shift.gif", speed = 0.2 } },
+--		hsb = { brightness = 0.02, saturation = 0.5 },
+--	},
+-- }
 
 -- launch and cli tools
 config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
@@ -20,17 +31,6 @@ table.insert(launch_menu, {
 
 config.launch_menu = launch_menu
 config.automatically_reload_config = true
-
--- background
-local backdrops = require("utils.backdrops")
-require("utils.backdrops"):set_files():random()
-
-config.background = {
-	{
-		source = { File = { path = wezterm.home_dir .. "/.config/wezterm/backdrops/night_shift.gif", speed = 0.2 } },
-		hsb = { brightness = 0.02, saturation = 0.5 },
-	},
-}
 
 local haswork, work = pcall(require, "work")
 

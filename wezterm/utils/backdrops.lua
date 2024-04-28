@@ -1,6 +1,5 @@
 local wezterm = require("wezterm")
 local platform = require("utils.platform")()
-local colors = wezterm.color_scheme
 
 -- Seeding random numbers before generating for use
 -- Known issue with lua math library
@@ -51,13 +50,8 @@ function BackDrops:_set_opt(window)
 	local opts = {
 		background = {
 			{
-				source = { File = wezterm.GLOBAL.background },
-			},
-			{
-				source = { Color = colors.background },
-				height = "100%",
-				width = "100%",
-				opacity = 0.96,
+				source = { File = { path = wezterm.GLOBAL.background, speed = 0.2 } },
+				hsb = { brightness = 0.02, saturation = 0.5 },
 			},
 		},
 	}
