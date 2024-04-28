@@ -1,19 +1,11 @@
+require("utils.backdrops"):set_files():choices()
+
 local wezterm = require("wezterm")
-require("utils.backdrops"):set_files():random()
 local act = wezterm.action
-local mux = wezterm.mux
 local config = {}
 
 -- background
 local backdrops = require("utils.backdrops")
-
--- Set the background image statically
---config.background = {
---	{
---		source = { File = { path = wezterm.home_dir .. "/.config/wezterm/backdrops/night_shift.gif", speed = 0.2 } },
---		hsb = { brightness = 0.02, saturation = 0.5 },
---	},
--- }
 
 -- launch and cli tools
 config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
@@ -32,8 +24,6 @@ table.insert(launch_menu, {
 config.launch_menu = launch_menu
 config.automatically_reload_config = true
 
-local haswork, work = pcall(require, "work")
-
 -- colour
 config.color_scheme_dirs = { "../../wezterm-dracula/dracula.toml" }
 config.color_scheme = "Dracula (Official)"
@@ -48,8 +38,8 @@ config.window_background_gradient = {
 	blend = "Rgb",
 }
 
--- font
-config.font = wezterm.font("CaskaydiaCove Nerd Font", { weight = "Bold" })
+-- font_size
+config.font = wezterm.font("Terminess Nerd Font", { weight = "Bold" })
 config.font_size = 17
 config.bold_brightens_ansi_colors = true
 

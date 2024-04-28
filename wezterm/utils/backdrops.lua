@@ -50,8 +50,8 @@ function BackDrops:_set_opt(window)
 	local opts = {
 		background = {
 			{
-				source = { File = { path = wezterm.GLOBAL.background, speed = 0.2 } },
-				hsb = { brightness = 0.02, saturation = 0.5 },
+				source = { File = { path = wezterm.GLOBAL.background, speed = 1 } },
+				hsb = { brightness = 0.1, saturation = 0.5 },
 			},
 		},
 	}
