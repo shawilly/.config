@@ -1,10 +1,10 @@
-local _monokaish = {
+local monokaish = {
 	"sainnhe/sonokai",
 	priority = 1000,
 	config = function()
 		vim.g.sonokai_transparent_background = "1"
 		vim.g.sonokai_enable_italic = "1"
-		vim.g.sonokai_style = "andromeda"
+		vim.g.sonokai_style = "atlantis"
 		vim.cmd.colorscheme("sonokai")
 	end,
 }
@@ -18,7 +18,7 @@ local _catpuccino = {
 	end,
 }
 
-local tokyonight = {
+local _tokyonight = {
 	"folke/tokyonight.nvim",
 	opts = {
 		transparent = true,
@@ -29,4 +29,4 @@ local tokyonight = {
 	},
 }
 
-return tokyonight
+return monokaish
