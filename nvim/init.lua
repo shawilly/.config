@@ -7,7 +7,6 @@ _G.dd = function(...)
 end
 vim.print = _G.dd
 
-require("custom.intro")
 require("services.health")
 require("services.plugins.debug")
 require("services.plugins.indent_line")
