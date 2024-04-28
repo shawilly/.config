@@ -181,7 +181,7 @@ return {
 				},
 				view = {
 					side = "right",
-					width = 30,
+					width = 40,
 					relativenumber = true,
 				},
 				renderer = {
@@ -198,7 +198,7 @@ return {
 					truncate = true,
 					types = {
 						diagnostics = true,
-						git = false,
+						git = true,
 						profile = true,
 						watcher = true,
 					},

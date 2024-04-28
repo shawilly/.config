@@ -2,11 +2,17 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.have_nerd_font = true
 
+-- disable netrw for nvim-tree
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.o.clipboard = "unnamedplus"
 vim.o.autowriteall = true
 
 vim.scriptencoding = "utf-8"
 
+-- enable 24-bit colour for terminal
+vim.opt.termguicolors = true
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 vim.opt.number = true
