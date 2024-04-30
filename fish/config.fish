@@ -29,3 +29,7 @@ if status is-interactive
         echo (set_color purple)"Remember, you got this 💖"(set_color normal)
     end
 end
+
+# ~/.config/fish/config.fish
+
+starship init fish | source
