@@ -39,7 +39,11 @@ config.window_background_gradient = {
 }
 
 -- font_size
-config.font = wezterm.font("Terminess Nerd Font", { weight = "Bold" })
+config.font = wezterm.font({
+	family = "RobotoMono Nerd Font",
+	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+	weight = "Bold",
+})
 config.font_size = 17
 config.bold_brightens_ansi_colors = true
 
