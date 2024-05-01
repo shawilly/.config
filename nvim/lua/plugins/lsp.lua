@@ -17,6 +17,7 @@ return {
 				"prettierd",
 				"black",
 				"isort",
+				"bash-language-server",
 			})
 		end,
 	},
@@ -28,6 +29,7 @@ return {
 			inlay_hints = { enabled = true },
 			---@type lspconfig.options
 			servers = {
+				bashls = {},
 				pyright = {},
 				cssls = {},
 				tailwindcss = {
@@ -170,6 +172,9 @@ return {
 				css = { { "prettierd", "prettier" } },
 				python = { "black", "isort" },
 				tailwindcss = { "prettierd", "prettier" },
+				sh = { "shfmt" },
+				bash = { "shfmt" },
+				zsh = { "shfmt" },
 			},
 		},
 	},

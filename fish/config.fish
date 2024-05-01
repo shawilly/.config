@@ -1,3 +1,5 @@
+# ~/.config/fish/config.fish
+
 if status is-interactive
     function fish_greeting
         # Clear the terminal
@@ -29,7 +31,3 @@ if status is-interactive
         echo (set_color purple)"Remember, you got this 💖"(set_color normal)
     end
 end
-
-# ~/.config/fish/config.fish
-
-starship init fish | source
