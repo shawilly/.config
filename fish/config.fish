@@ -1,33 +1,58 @@
 # ~/.config/fish/config.fish
 
+# Check if the shell is interactive
 if status is-interactive
+    # Define the greeting function
     function fish_greeting
         # Clear the terminal
         clear
-        echo (set_color red)"
- >f<e(e(s(h('>
-"
-        # Greeting message
-        echo (set_color cyan)"✨ Welcome back," (set_color green)(whoami)(set_color cyan) ", It's great to see you. ✨"
-        # Display current time with yellow color
-        echo "The current time is: "(set_color yellow)(date +%T)(set_color normal)
-        # Display hostname with blue color
-        echo "You are working on: "(set_color blue)$hostname(set_color normal)
-        # Display an inspiring quote or message
-        echo ""
-        set quote (curl -s "https://api.quotable.io/random" | jq -r '"\(.content) — \(.author)"')
-        set json (curl -s "https://api.quotable.io/random")
 
-        # Extract the quote and the author using jq
+        # Fancy fish ASCII art in red
+        set_color red
+        echo ">f<e(e(s(h('>"
+        set_color normal
+
+        # Greeting message with the username in green
+        set_color cyan
+        echo "✨ Welcome back," (set_color green)(whoami)(set_color cyan) ", It's great to see you. ✨"
+        set_color normal
+
+        # Display the current time in yellow
+        set_color yellow
+        echo "The current time is: "(date +%T)
+        set_color normal
+
+        # Display the hostname in blue
+        set_color blue
+        echo "You are working on: "(hostname)
+        set_color normal
+        echo ""
+
+        # Fetch and display an inspiring quote
+        set json (curl -s "https://api.quotable.io/random")
         set quote (echo $json | jq -r '.content')
         set author (echo $json | jq -r '.author')
-        # parts[1] will contain the quote text before "-"
-        # parts[2] will contain the "-" and everything after, which is the quoter part
 
-        echo (set_color brblack)"Random Quote:"(set_color normal) (set_color green)"$quote"(set_color brmagenta)" - $author"(set_color normal)
-        # Additional useful info could be added here
+        set_color brblack
+        echo "Random Quote:"
+        set_color green
+        echo $quote
+        set_color brmagenta
+        echo " - "$author
+        set_color normal
+        echo ""
         echo ""
 
-        echo (set_color purple)"Remember, you got this 💖"(set_color normal)
+        # Encouraging message
+        set_color purple
+        echo "Remember, you got this 💖"
+        set_color normal
     end
 end
+
+# Setting Android SDK environment variables
+set -gx ANDROID_HOME $HOME/Library/Android/sdk
+set -gx PATH $PATH $ANDROID_HOME/emulator
+set -gx PATH $PATH $ANDROID_HOME/platform-tools
+set -gx PATH $PATH $ANDROID_HOME/tools
+set -gx PATH $PATH $ANDROID_HOME/tools/bin
