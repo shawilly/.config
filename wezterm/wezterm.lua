@@ -4,6 +4,8 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 local config = {}
 
+config.native_macos_fullscreen_mode = true
+
 -- background
 local backdrops = require("utils.backdrops")
 
@@ -223,6 +225,11 @@ local keys = {
 				backdrops:set_img(window, tonumber(idx))
 			end),
 		}),
+	},
+	{
+		key = "r",
+		mods = "SUPER|SHIFT",
+		action = wezterm.action.ReloadConfiguration,
 	},
 }
 config.keys = keys
