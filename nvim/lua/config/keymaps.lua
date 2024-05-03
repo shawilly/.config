@@ -57,3 +57,4 @@ end, opts)
 
 -- Custom plugins
 vim.keymap.set("n", "<leader>ts", ":TSTools")
+vim.keymap.set("n", "<leader>lr", ":LspRestart")
