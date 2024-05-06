@@ -44,7 +44,6 @@ config.window_background_gradient = {
 config.font = wezterm.font({
 	family = "RobotoMono Nerd Font",
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-	weight = "Bold",
 })
 config.bold_brightens_ansi_colors = true
 
