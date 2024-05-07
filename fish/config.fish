@@ -34,7 +34,6 @@ if status is-interactive
         set author (echo $json | jq -r '.author')
 
         set_color brblack
-        echo "Random Quote:"
         set_color green
         echo $quote
         set_color brmagenta
