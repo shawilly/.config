@@ -6,15 +6,15 @@ Things that I don't really get, but really need. I store commands here that I al
 ┌─────────────────────────────────────────────┐                   ______________________
 │                                             │                 { Being a good developer }
 └┐                                            │                   ______________________
- │    ┌───────────┐                       ┌───▼────               
- │    │           │                       │ My Brain              
- │    │           │    ┌────────────────┐ │       │               
- │    │           │    │                │ └───────┘               
- │    │  Information   │                │                         
- │    │           │    │                │                         
- │    │           ├────┼───┐            │                         
- │    │           │    │   │            │                         
- │    └───────────┘    │   │            │                         
+ │    ┌───────────┐                       ┌───▼────
+ │    │           │                       │ My Brain
+ │    │           │    ┌────────────────┐ │       │
+ │    │           │    │                │ └───────┘
+ │    │  Information   │                │
+ │    │           │    │                │
+ │    │           ├────┼───┐            │
+ │    │           │    │   │            │
+ │    └───────────┘    │   │            │
  │                     │   │            │                        │
  └─────────────────────┼───┼────────────┼────────────────────────┤
                        │   │            │                        │
@@ -23,14 +23,16 @@ Things that I don't really get, but really need. I store commands here that I al
                        │                     ┌─────────────┐     │
                        │                     │             │     │
                        └────────────────────►│  This doc   ├─────┘
-                                             │             │      
+                                             │             │
                                              └─────────────┘
 ```
 
 ---
-``` bash
+
+```bash
 sudo lsof -nP -iTCP -sTCP:LISTEN | grep PORTNUMBER
 ```
+
 #### Used for finding processes listening on a specific port
 
 The `sudo lsof -nP -iTCP -sTCP:LISTEN` command lists all open files (including network sockets) and filters them to show only those in a listening state:
@@ -45,9 +47,11 @@ The `sudo lsof -nP -iTCP -sTCP:LISTEN` command lists all open files (including n
 ps -ef | grep vim
 
 ---
-``` bash
+
+```bash
 ps -ef | grep vim
 ```
+
 #### Used for finding open vim sessions
 
 The `ps` command writes the status of active processes:
@@ -58,6 +62,8 @@ The `ps` command writes the status of active processes:
 
 ---
 
-``` bash
+```bash
 for f in *; do mv -v "$f" “${f/wordtoreplace/wordtoreplacewith}”; done;
 ```
+
+#### Used to replace words in file names

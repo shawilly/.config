@@ -1,11 +1,17 @@
 return {
 	{
 		"nvimdev/dashboard-nvim",
-		enabled = false,
+		event = "VimEnter",
+		config = function()
+			require("dashboard").setup({
+				-- config
+			})
+		end,
+		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		enabled = false,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	-- messages, cmdline and the popupmenu
 	{
@@ -187,14 +193,8 @@ return {
 				renderer = {
 					group_empty = true,
 				},
-				filters = {
-					custom = {
-						"node_modules/.*",
-					},
-				},
 				log = {
 					enable = true,
-
 					truncate = true,
 					types = {
 						diagnostics = true,

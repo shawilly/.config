@@ -132,6 +132,7 @@ return {
 		opts = {
 			notify_on_error = true,
 			formatters_by_ft = {
+				java = { "uncrustify" },
 				lua = { "stylua" },
 				typescript = { { "prettierd", "prettier" } },
 				typescriptreact = { { "prettierd", "prettier" } },

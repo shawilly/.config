@@ -172,6 +172,7 @@ wezterm.on("update-right-status", function(window, pane)
 	}))
 end)
 
+-- Allow zen mode to adjust font size and zoom level
 wezterm.on("user-var-changed", function(window, pane, name, value)
 	local overrides = window:get_config_overrides() or {}
 	if name == "ZEN_MODE" then
