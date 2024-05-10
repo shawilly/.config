@@ -56,7 +56,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "5b9067899ee6a2538891573500e8fd6ff008440f" },
   "persistence.nvim": { "branch": "main", "commit": "4982499c1636eac254b72923ab826ee7827b3084" },
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
-  "ponokai": { "branch": "master", "commit": "7e7e475eeebd281aa1cde3fb58960b82fd807518" },
+  "ponokai": { "branch": "master", "commit": "b0c5fb85edad79bdcee48d8d0f7c144e926ab19b" },
   "refactoring.nvim": { "branch": "master", "commit": "d2786877c91aa409c824f27b4ce8a9f560dda60a" },
   "rest.nvim": { "branch": "main", "commit": "f96edb54a2940322bc7ed81a1031be04db7d3a99" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },
