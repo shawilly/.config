@@ -28,17 +28,7 @@ config.automatically_reload_config = true
 
 -- colour
 config.color_scheme_dirs = { "../../wezterm-dracula/dracula.toml" }
-config.color_scheme = "Dracula (Official)"
-config.window_background_gradient = {
-	orientation = "Vertical",
-	colors = {
-		"#2c2e34",
-		"#2c2e34",
-		"#17181c",
-	},
-	interpolation = "Linear",
-	blend = "Rgb",
-}
+config.color_scheme = "catppuccino"
 
 -- font
 config.font = wezterm.font({
@@ -49,37 +39,6 @@ config.bold_brightens_ansi_colors = true
 
 -- tab bar
 config.use_fancy_tab_bar = false
-config.colors = {
-	tab_bar = {
-		background = "#0b0022",
-		active_tab = {
-			bg_color = "#2b2042",
-			fg_color = "#c0c0c0",
-			intensity = "Normal",
-			underline = "None",
-			italic = false,
-			strikethrough = false,
-		},
-		inactive_tab = {
-			bg_color = "#1b1032",
-			fg_color = "#808080",
-		},
-		inactive_tab_hover = {
-			bg_color = "#3b3052",
-			fg_color = "#909090",
-			italic = true,
-		},
-		new_tab = {
-			bg_color = "#1b1032",
-			fg_color = "#808080",
-		},
-		new_tab_hover = {
-			bg_color = "#3b3052",
-			fg_color = "#909090",
-			italic = true,
-		},
-	},
-}
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local palette = config.resolved_palette.tab_bar

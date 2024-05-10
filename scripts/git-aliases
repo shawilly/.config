@@ -1,3 +1,4 @@
 git config --global alias.aa 'add --all'
 git config --global alias.bb !./better-branch.sh
-git config --global alias.c 'git commit'
+git config --global alias.c 'commit'
+git config --global alias.publish 'push --set-upstream origin'
