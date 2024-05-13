@@ -34,7 +34,7 @@ local _ponokai = {
 	priority = 1000,
 	config = function()
 		vim.g.ponokai_enable_italic = "1"
-		vim.g.ponokai_style = "default"
+		vim.g.ponokai_style = "kitty"
 		vim.cmd.colorscheme("ponokai")
 	end,
 }

@@ -37,4 +37,11 @@ return {
 		},
 		opts = {},
 	},
+
+	-- Commenting stuff
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+		lazy = false,
+	},
 }

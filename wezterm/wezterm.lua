@@ -38,27 +38,44 @@ config.font = wezterm.font({
 config.bold_brightens_ansi_colors = true
 
 -- tab bar
+config.tab_bar_at_bottom = false
 config.use_fancy_tab_bar = false
+config.status_update_interval = 1000
 
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-	local palette = config.resolved_palette.tab_bar
-	local colors = {
-		bg = palette.background,
-		tab = tab.is_active and palette.active_tab.bg_color or palette.inactive_tab.bg_color,
-		fg = tab.is_active and palette.active_tab.fg_color or palette.inactive_tab.fg_color,
-	}
+wezterm.on("update-status", function(window, pane)
+	-- Time
+	local time = wezterm.strftime("%H:%M")
 
-	return {
-		{ Background = { Color = colors.bg } },
-		{ Foreground = { Color = colors.tab } },
-		{ Text = wezterm.nerdfonts.ple_lower_right_triangle },
-		{ Background = { Color = colors.tab } },
-		{ Foreground = { Color = colors.fg } },
-		{ Text = tab.active_pane.title },
-		{ Background = { Color = colors.tab } },
-		{ Foreground = { Color = colors.bg } },
-		{ Text = wezterm.nerdfonts.ple_upper_right_triangle },
-	}
+	-- Left status (left of the tab line)
+	window:set_left_status(wezterm.format({
+		{ Text = " do it for them <3 " },
+		{ Text = " |" },
+	}))
+
+	-- Current working directory
+	local basename = function(s)
+		-- Nothing a little regex can't fix
+		return string.gsub(s, "(.*[/\\])(.*)", "%2")
+		-- return s
+	end
+
+	-- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l). Not a big deal, but check in case
+	local cwd = pane:get_current_working_dir()
+	cwd = basename(cwd.path) or ""
+	-- Current command
+	local cmd = basename(pane:get_foreground_process_name()) or ""
+
+	-- Right status
+	window:set_right_status(wezterm.format({
+		{ Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
+		{ Text = " | " },
+		{ Foreground = { Color = "#e0af68" } },
+		{ Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
+		"ResetAttributes",
+		{ Text = " | " },
+		{ Text = wezterm.nerdfonts.md_clock .. "  " .. time },
+		{ Text = "  " },
+	}))
 end)
 
 wezterm.on("update-right-status", function(window, pane)
