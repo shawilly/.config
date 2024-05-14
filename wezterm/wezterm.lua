@@ -8,6 +8,8 @@ config.native_macos_fullscreen_mode = true
 
 -- background
 local backdrops = require("utils.backdrops")
+config.window_background_opacity = 0.3
+config.macos_window_background_blur = 20
 
 -- launch and cli tools
 config.default_prog = { "/opt/homebrew/bin/fish", "-l" }

@@ -69,6 +69,11 @@ function BackDrops:choices()
 			label = name,
 		})
 	end
+	--- Add a none option to remove the background image
+	table.insert(choices, {
+		id = "0",
+		label = "None",
+	})
 	return choices
 end
 
