@@ -38,9 +38,10 @@ config.color_scheme = "Catppuccin Mocha"
 
 -- font
 config.font = wezterm.font({
-	family = "RobotoMono Nerd Font",
+	family = "SauceCodePro Nerd Font",
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
+config.font_size = 14
 config.bold_brightens_ansi_colors = true
 
 -- tab bar
