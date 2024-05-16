@@ -79,11 +79,11 @@ wezterm.on("update-status", function(window, pane)
 		-- Display charging or discharging state
 		if b.state == "Charging" then
 			if b.time_to_full then
-				state_suffix = state_suffix .. " " .. math.ceil(b.time_to_full / 60) .. "m "
+				state_suffix = state_suffix .. " " .. math.ceil(b.time_to_full / 60) .. "m"
 			end
 		elseif b.state == "Discharging" then
 			if b.time_to_empty then
-				state_suffix = math.ceil(b.time_to_empty / 60) .. "m "
+				state_suffix = math.ceil(b.time_to_empty / 60) .. "m"
 			end
 		end
 
@@ -132,7 +132,7 @@ wezterm.on("update-status", function(window, pane)
 			{ Text = " | " },
 			{ Foreground = { Color = charge_color } },
 			{ Text = battery .. " " },
-			{ Text = charge_percent },
+			{ Text = charge_percent .. " " },
 			{ Text = state_suffix },
 			"ResetAttributes",
 			{ Text = " | " },
