@@ -33,7 +33,7 @@ config.color_scheme = "Catppuccino Dark"
 
 -- font
 config.font = wezterm.font({
-	family = "SauceCodePro Nerd Font",
+	family = "JetBrainsMono Nerd Font",
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
 config.font_size = 14
