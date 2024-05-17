@@ -118,6 +118,8 @@ wezterm.on("update-status", function(window, pane)
 			cmd_icon = wezterm.nerdfonts.md_fish
 		elseif cmd == "bash" then
 			cmd_icon = wezterm.nerdfonts.cod_terminal_bash
+		elseif cmd == "node" then
+			cmd_icon = wezterm.nerdfonts.md_nodejs
 		end
 
 		-- Right status
