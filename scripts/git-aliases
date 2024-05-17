@@ -1,4 +1,7 @@
 git config --global alias.aa 'add --all'
 git config --global alias.bb !./better-branch.sh
 git config --global alias.c 'commit'
+git config --global alias.s 'status'
+git config --global alias.ss 'status -sb'
 git config --global alias.publish 'push --set-upstream origin'
+git config --global alias.fancylog '-c color.ui=always log --all --graph --pretty=format:\'%Cred%h%Creset -%C\(yellow\)%d%Creset %s %Cgreen\(%cr\) %C\(bold blue\)<%ae>%Creset\' --abbrev-commit --decorate'
