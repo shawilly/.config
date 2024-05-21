@@ -153,6 +153,9 @@ local PYTHON_ICON = utf8.char(0xf820)
 local NODE_ICON = utf8.char(0xe74e)
 local DENO_ICON = utf8.char(0xe628)
 local LAMBDA_ICON = utf8.char(0xfb26)
+local MONGO_ICON = nf.dev_mongodb
+local FISH_ICON = nf.md_fish .. nf.fa_terminal
+local SSH_ICON = nf.md_ssh
 
 local SUP_IDX = {
 	"¹",
@@ -235,6 +238,14 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		title_with_icon = DENO_ICON .. " " .. exec_name:upper()
 	elseif exec_name == "bb" or exec_name == "cmd-clj" or exec_name == "janet" or exec_name == "hy" then
 		title_with_icon = LAMBDA_ICON .. " " .. exec_name:gsub("bb", "Babashka"):gsub("cmd%-clj", "Clojure")
+	elseif exec_name == "mongo" then
+		title_with_icon = MONGO_ICON .. " " .. exec_name
+	elseif exec_name == "fish" then
+		title_with_icon = FISH_ICON .. " " .. pane_title:gsub("~/", "")
+	elseif exec_name == "ssh" then
+		title_with_icon = SSH_ICON
+	elseif exec_name == "bash" then
+		title_with_icon = process_icons[exec_name] .. " " .. pane_title:gsub("~/", "")
 	else
 		title_with_icon = HOURGLASS_ICON .. " " .. exec_name
 	end
