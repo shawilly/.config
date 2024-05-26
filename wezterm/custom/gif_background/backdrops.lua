@@ -1,5 +1,5 @@
 local wezterm = require("wezterm")
-local platform = require("utils.platform")()
+local platform = require("custom.gif_background.platform")()
 
 -- Seeding random numbers before generating for use
 -- Known issue with lua math library
@@ -38,7 +38,7 @@ end
 ---   This throws a coroutine error if the function is invoked in outside of `wezterm.lua` in the -
 ---   initial load of the Terminal config.
 function BackDrops:set_files()
-	self.files = wezterm.read_dir(wezterm.config_dir .. PATH_SEP .. "backdrops")
+	self.files = wezterm.read_dir(wezterm.config_dir .. PATH_SEP .. "assets/backdrops")
 	wezterm.GLOBAL.background = self.files[1]
 	return self
 end
