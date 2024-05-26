@@ -15,7 +15,7 @@ local dividers = {
 local dev_icons = {
 	["default"] = nf.fa_terminal,
 	["folder"] = nf.md_folder,
-	["clock"] = nf.md_clock,
+	["clock"] = nf.md_clock_outline,
 	["Charging"] = nf.fa_plug,
 	["docker"] = nf.linux_docker,
 	["docker-compose"] = nf.linux_docker,
@@ -26,6 +26,7 @@ local dev_icons = {
 	["nvim"] = nf.custom_vim,
 	["make"] = nf.seti_makefile,
 	["vim"] = nf.dev_vim,
+	["vi"] = nf.dev_vim,
 	["go"] = nf.seti_go,
 	["zsh"] = nf.dev_terminal,
 	["bash"] = nf.cod_terminal_bash,
@@ -43,7 +44,7 @@ local dev_icons = {
 	["pwsh"] = nf.seti_powershell,
 	["node"] = nf.dev_nodejs_small,
 	["dotnet"] = nf.md_language_csharp,
-	["fish"] = nf.md_fish .. nf.fa_terminal,
+	["fish"] = nf.md_fish,
 	["mongo"] = nf.dev_mongodb,
 	["ssh"] = nf.md_ssh,
 	["python"] = nf.dev_python,
@@ -113,6 +114,7 @@ local battery = {
 		[0.7] = nf.md_battery_70,
 		[0.8] = nf.md_battery_80,
 		[0.9] = nf.md_battery_90,
+		[1] = nf.md_battery_90,
 	},
 	["Charging"] = {
 		[0.1] = nf.md_battery_charging_10,
@@ -124,6 +126,7 @@ local battery = {
 		[0.7] = nf.md_battery_charging_70,
 		[0.8] = nf.md_battery_charging_80,
 		[0.9] = nf.md_battery_charging_90,
+		[1] = nf.md_battery_charging_90,
 	},
 }
 

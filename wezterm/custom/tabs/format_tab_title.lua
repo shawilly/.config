@@ -11,6 +11,19 @@ local function basename(s)
 	return string.gsub(s, "(.*[/\\])(.*)", "%2")
 end
 
+local editors = { "nvim", "vim", "vi" }
+local clojure_tools = { "bb", "cmd-clj", "janet", "hy" }
+local shells = { "bash", "fish" }
+
+local function is_in_list(item, list)
+	for _, v in ipairs(list) do
+		if item == v then
+			return true
+		end
+	end
+	return false
+end
+
 local format_tab_title = function(tab, _tabs, _panes, _config, _hover, max_width)
 	---@type string
 	local process_name = tab.active_pane.foreground_process_name
@@ -21,12 +34,14 @@ local format_tab_title = function(tab, _tabs, _panes, _config, _hover, max_width
 	local exec_name = basename(process_name):gsub("%.exe$", "")
 	local title_with_icon = dev_icons[exec_name] or dev_icons["default"]
 
-	if exec_name == "nvim" then
+	if is_in_list(exec_name, editors) then
 		title_with_icon = title_with_icon .. " " .. pane_title:gsub("^(%S+)%s+(%d+/%d+) %- nvim", " %2 %1")
-	elseif exec_name == "bb" or exec_name == "cmd-clj" or exec_name == "janet" or exec_name == "hy" then
+	elseif is_in_list(exec_name, clojure_tools) then
 		title_with_icon = title_with_icon .. " " .. exec_name:gsub("bb", "Babashka"):gsub("cmd%-clj", "Clojure")
-	elseif exec_name == "bash" then
+	elseif is_in_list(exec_name, shells) then
 		title_with_icon = title_with_icon .. " " .. pane_title:gsub("~/", "")
+	else
+		title_with_icon = title_with_icon .. " " .. pane_title
 	end
 
 	local id = tab_numbers.sub_idx[tab.tab_index + 1]

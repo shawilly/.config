@@ -2,10 +2,11 @@ local wezterm = require("wezterm")
 local colors = require("custom.status_bar.colors")
 local icons = require("assets.icons")
 
+local charge_colors = colors.charge_colors
 local dev_icons = icons.dev_icons
 local battery_icons = icons.battery
 local soft_divider = " " .. icons.dividers["soft_right"] .. " "
-local hard_divider = " " .. icons.dividers["hard_right"] .. " "
+local hard_divider = " " .. icons.dividers["hard_right"]
 
 local heart = icons.dividers["heart"]
 
@@ -18,7 +19,7 @@ local update_status = function(window, pane)
 	local battery = battery_icons["Full"]
 
 	---@type string
-	local charge_color = colors["Full"]
+	local charge_color = charge_colors["Full"]
 	local charge_percent = ""
 
 	---@type table<string, table>
@@ -39,7 +40,7 @@ local update_status = function(window, pane)
 		battery = battery_icons[state][charge_key]
 
 		---@type string
-		charge_color = colors[charge_key]
+		charge_color = charge_colors[charge_key]
 
 		local state_suffix = ""
 
@@ -87,12 +88,12 @@ local update_status = function(window, pane)
 			{ Text = battery .. " " },
 			{ Text = charge_percent .. " " },
 			{ Text = state_suffix },
-			{ Background = { Color = "grey" } },
+			{ Foreground = { Color = charge_color } },
 			{ Text = hard_divider },
 			"ResetAttributes",
-			{ Background = { Color = "grey" } },
+			{ Background = { Color = charge_color } },
+			{ Foreground = { Color = "black" } }, -- Optional: Change text color for better contrast
 			{ Text = date_time },
-			{ Text = "  " },
 		}))
 	end
 end
