@@ -18,6 +18,11 @@ config.window_padding = {
 	bottom = "0cell",
 }
 
+-- cursor
+config.cursor_blink_rate = 100
+config.cursor_blink_ease_in = "Constant"
+config.cursor_blink_ease_out = "Constant"
+
 -- keys
 config.keys = require("config.keys")
 

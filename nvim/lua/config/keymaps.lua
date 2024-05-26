@@ -19,9 +19,8 @@ keymap.set("n", "<Leader>w", ":update<Return>", opts)
 keymap.set("n", "<Leader>q", ":quit<Return>", opts)
 keymap.set("n", "<Leader>Q", ":qa<Return>", opts)
 
--- File explorer with NvimTree
-keymap.set("n", "<Leader>tt", ":NvimTreeFindFile<Return>", opts)
-keymap.set("n", "<Leader>t", ":NvimTreeToggle<Return>", opts)
+-- File explorer with NeoTree
+keymap.set("n", "<Leader>t", ":Neotree filesystem reveal float toggle<Return>", opts)
 
 -- Tabs
 keymap.set("n", "te", ":tabedit")
