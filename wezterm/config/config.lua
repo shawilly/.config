@@ -8,23 +8,20 @@ end
 
 -- window
 config.native_macos_fullscreen_mode = true
-config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.60
 config.macos_window_background_blur = 22
 config.window_padding = {
-	left = "0cell",
+	left = 0,
 	right = 0,
-	top = "0.8cell",
-	bottom = "0cell",
+	top = 0,
+	bottom = 0,
 }
 
 -- cursor
 config.cursor_blink_rate = 100
 config.cursor_blink_ease_in = "Constant"
 config.cursor_blink_ease_out = "Constant"
-
--- keys
-config.keys = require("config.keys")
 
 -- launch and cli tools
 config.default_prog = { "/opt/homebrew/bin/fish", "-l" }
@@ -58,5 +55,8 @@ config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
+
+-- keys
+config.keys = require("config.keys")
 
 return config
