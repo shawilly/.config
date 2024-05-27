@@ -51,7 +51,6 @@ config.font_size = 16
 config.bold_brightens_ansi_colors = true
 
 -- tab bar
-config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
