@@ -52,6 +52,7 @@ local dev_icons = {
 	["lambda"] = nf.md_lambda,
 	["left_arrow"] = nf.md_arrow_left,
 	["right_arrow"] = nf.md_arrow_right,
+	["java"] = nf.dev_java,
 }
 
 local tab_numbers = {
