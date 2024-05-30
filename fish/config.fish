@@ -31,3 +31,4 @@ end
 # Setting Android SDK environment variables
 set -gx ANDROID_HOME $HOME/Library/Android/sdk
 set -gx PATH $ANDROID_HOME/emulator $ANDROID_HOME/platform-tools $ANDROID_HOME/tools $ANDROID_HOME/tools/bin $PATH
+starship init fish | source
