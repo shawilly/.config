@@ -32,11 +32,7 @@ return {
 				bashls = {},
 				pyright = {},
 				cssls = {},
-				tailwindcss = {
-					root_dir = function(...)
-						return require("lspconfig.util").root_pattern(".git")(...)
-					end,
-				},
+				tailwindcss = {},
 				html = {},
 				lua_ls = {
 					-- enabled = false,
