@@ -40,10 +40,7 @@ local update_status = function(window, pane)
 		local charge_percent = string.format("%.0f%%", state_of_charge * 100)
 
 		---@type number
-		local charge_key = math.ceil(state_of_charge * 10) / 10
-		if charge_key < 0.1 then
-			charge_key = 0
-		end
+		local charge_key = math.floor(state_of_charge * 10) / 10
 
 		---@type string
 		battery = battery_icons[state][charge_key]
@@ -82,7 +79,7 @@ local update_status = function(window, pane)
 
 		window:set_left_status(wezterm.format({
 			{ Foreground = { Color = charge_color } },
-			{ Text = " do it for them " .. heart .. "  " },
+			{ Text = " do it for them " .. heart .. "  " .. charge_key },
 		}))
 		--
 		window:set_right_status(wezterm.format({
