@@ -25,7 +25,7 @@ local update_status = function(window, pane)
 	local battery = battery_icons[1]
 
 	---@type string
-	local charge_color = charge_colors["Full"]
+	local charge_color = charge_colors[1]
 
 	---@type table<string, table>
 	local battery_info = wezterm.battery_info()
@@ -50,7 +50,7 @@ local update_status = function(window, pane)
 		---@type string
 		charge_color = charge_colors[charge_key]
 
-		local state_suffix = "full"
+		local state_suffix = ""
 		if state == "Charging" and b.time_to_full then
 			---@type string
 			state_suffix = icons.dev_icons[state] .. " " .. math.ceil(b.time_to_full / 60) .. "m"

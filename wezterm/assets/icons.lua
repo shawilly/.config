@@ -106,7 +106,7 @@ local tab_numbers = {
 
 ---@type table<string, string | table<number, string>>
 local battery = {
-	["Full"] = nf.md_battery_heart,
+	["Full"] = { [1] = nf.md_battery_heart },
 	["Charging"] = {
 		[0] = nf.md_battery_charging_outline,
 		[0.1] = nf.md_battery_charging_10,

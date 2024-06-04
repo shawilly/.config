@@ -10,7 +10,7 @@ local charge_colors = {
 	[0.7] = "#D1F0B9",
 	[0.8] = "#C9F0AA",
 	[0.9] = "#b4e49a",
-	[1] = "#98d4e7",
+	[1] = "#69de78",
 }
 
 return { charge_colors = charge_colors }
