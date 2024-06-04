@@ -36,11 +36,7 @@ config.launch_menu = launch_menu
 config.automatically_reload_config = true
 
 -- colour
-local custom = wezterm.color.get_builtin_schemes()["Catppuccin Macchiato"]
-config.color_schemes = {
-	["OLEDppuccin"] = custom,
-}
-config.color_scheme = "OLEDppuccin"
+config.color_scheme = "Catppuccin Mocha"
 
 -- font
 config.font = wezterm.font({

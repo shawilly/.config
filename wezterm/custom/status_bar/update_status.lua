@@ -90,7 +90,7 @@ local update_status = function(window, pane)
 			{ Text = directory },
 			"ResetAttributes",
 			{ Text = soft_divider },
-			{ Foreground = { Color = "#b4e49a" } },
+			{ Foreground = { Color = "#bdb2ff" } },
 			{ Text = process },
 			"ResetAttributes",
 			{ Text = soft_divider },
