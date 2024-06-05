@@ -79,7 +79,7 @@ local update_status = function(window, pane)
 
 		window:set_left_status(wezterm.format({
 			{ Foreground = { Color = charge_color } },
-			{ Text = " do it for them " .. heart .. "  " .. charge_key },
+			{ Text = " dift " .. heart .. " " },
 		}))
 		--
 		window:set_right_status(wezterm.format({
@@ -87,7 +87,7 @@ local update_status = function(window, pane)
 			{ Text = directory },
 			"ResetAttributes",
 			{ Text = soft_divider },
-			{ Foreground = { Color = "#bdb2ff" } },
+			{ Foreground = { Color = "#f2f2f3" } },
 			{ Text = process },
 			"ResetAttributes",
 			{ Text = soft_divider },
@@ -100,7 +100,7 @@ local update_status = function(window, pane)
 			"ResetAttributes",
 			{ Background = { Color = charge_color } },
 			{ Foreground = { Color = "black" } }, -- Optional: Change text color for better contrast
-			{ Text = date_time },
+			{ Text = date_time .. " " },
 		}))
 	end
 end
