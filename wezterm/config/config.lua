@@ -42,7 +42,6 @@ config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font({
 	family = "JetBrainsMono Nerd Font",
 	weight = "DemiBold",
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
 config.font_size = 17
 config.bold_brightens_ansi_colors = true

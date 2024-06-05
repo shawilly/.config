@@ -13,7 +13,7 @@ end
 
 local editors = { "nvim", "vim", "vi" }
 local clojure_tools = { "bb", "cmd-clj", "janet", "hy" }
-local shells = { "bash", "fish" }
+local shells = { "lazygit", "bash", "fish" }
 
 local function is_in_list(item, list)
 	for _, v in ipairs(list) do

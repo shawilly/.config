@@ -55,6 +55,7 @@ local dev_icons = {
 	["vim"] = nf.dev_vim,
 	["wget"] = nf.mdi_arrow_down_box,
 	["zsh"] = nf.dev_terminal,
+	["lazygit"] = nf.dev_git,
 }
 
 local tab_numbers = {

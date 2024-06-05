@@ -79,7 +79,7 @@ local update_status = function(window, pane)
 
 		window:set_left_status(wezterm.format({
 			{ Foreground = { Color = charge_color } },
-			{ Text = " dift " .. heart .. " " },
+			{ Text = " dift " .. heart .. "  " },
 		}))
 		--
 		window:set_right_status(wezterm.format({
