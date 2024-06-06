@@ -45,7 +45,7 @@ local update_status = function(window, pane)
 		---@type string
 		battery = battery_icons[state][charge_key]
 		---@type string
-		charge_color = charge_colors[charge_key]
+		charge_color = charge_colors[state][charge_key]
 
 		local state_suffix = ""
 		if state == "Charging" and b.time_to_full then
