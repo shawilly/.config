@@ -49,11 +49,5 @@ keymap.set("n", "<right>", '<cmd>echo "Use l ya idiot"<CR>')
 keymap.set("n", "<up>", '<cmd>echo "Use k ya idiot"<CR>')
 keymap.set("n", "<down>", '<cmd>echo "Use j ya idiot"<CR>')
 
--- Diagnostics
-keymap.set("n", "<C-j>", function()
-	vim.diagnostic.goto_next()
-end, opts)
-
--- Custom plugins
-vim.keymap.set("n", "<leader>ts", ":TSTools")
+-- LSP
 vim.keymap.set("n", "<leader>lr", ":LspRestart")
