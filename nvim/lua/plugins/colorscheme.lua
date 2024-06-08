@@ -1,19 +1,18 @@
 return {
+	-- {
+	-- 	"rebelot/kanagawa.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {
+	-- 		transparent = false,
+	-- 	},
+	-- },
 	{
-		"craftzdog/solarized-osaka.nvim",
-		lazy = false,
+		"shawilly/ponokai",
 		priority = 1000,
-		opts = {
-			transparent = false,
-		},
+		config = function()
+			vim.g.ponokai_enable_italic = "1"
+			vim.cmd.colorscheme("ponokai")
+		end,
 	},
 }
-
--- {
--- 	"shawilly/ponokai",
--- 	priority = 1000,
--- 	config = function()
--- 		vim.g.ponokai_enable_italic = "1"
--- 		vim.cmd.colorscheme("ponokai")
--- 	end,
--- },
