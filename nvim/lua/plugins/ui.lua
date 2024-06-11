@@ -3,11 +3,7 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = function()
-			require("lualine").setup({
-				options = {
-					theme = "ponokai",
-				},
-			})
+			require("lualine").setup({})
 		end,
 	},
 	-- messages, cmdline and the popupmenu

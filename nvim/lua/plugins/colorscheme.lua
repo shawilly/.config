@@ -15,4 +15,22 @@ return {
 			vim.cmd.colorscheme("ponokai")
 		end,
 	},
+	-- {
+	-- 	"shawilly/ponokai.nvim",
+	-- 	dependencies = { "rktjmp/lush.nvim" },
+	-- 	name = "ponokai",
+	-- 	branch = "main",
+	-- 	priority = 1000,
+	-- 	config = function()
+	-- 		vim.cmd("colorscheme ponokai")
+	-- 	end,
+	-- },
+	{
+		"brenoprata10/nvim-highlight-colors",
+		config = function()
+			require("nvim-highlight-colors").setup({
+				enable_tailwind = true,
+			})
+		end,
+	},
 }
