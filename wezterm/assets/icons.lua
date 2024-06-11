@@ -123,7 +123,7 @@ local battery = {
 	},
 	["Discharging"] = {
 		[0] = nf.md_battery_alert_variant_outline,
-		[0.1] = nf.md_battery_alert_variant_outline,
+		[0.1] = nf.md_battery_10,
 		[0.2] = nf.md_battery_20,
 		[0.3] = nf.md_battery_30,
 		[0.4] = nf.md_battery_40,

@@ -1,9 +1,9 @@
 ---@type table<string, table<number | string, string>>
 local charge_colors = {
 	["Discharging"] = {
-		[0] = "#FB5b5b",
-		[0.1] = "#F3696F",
-		[0.2] = "#ff8c9a",
+		[0] = "#F3696F",
+		[0.1] = "#ff8c9a",
+		[0.2] = "#f9a49a",
 		[0.3] = "#f3bb9a",
 		[0.4] = "#FFDAB9",
 		[0.5] = "#f8e7b0",
