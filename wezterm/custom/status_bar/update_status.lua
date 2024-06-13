@@ -1,6 +1,11 @@
+---@diagnostic disable
 local wezterm = require("wezterm")
 local colors = require("custom.status_bar.colors")
 local icons = require("assets.icons")
+---@diagnostic enable
+
+---@type table<string, string>
+local palette = require("theme.ponokai.palette")
 
 ---@type table<string, string>
 local charge_colors = colors.charge_colors
@@ -8,8 +13,6 @@ local charge_colors = colors.charge_colors
 local dev_icons = icons.dev_icons
 ---@type table<string, string>
 local battery_icons = icons.battery
----@type string
-local soft_divider = " " .. icons.dividers["soft_right"] .. " "
 ---@type string
 local hard_divider = " " .. icons.dividers["hard_right"]
 ---@type string
@@ -78,21 +81,29 @@ local update_status = function(window, pane)
 		local date_time = icons.dev_icons["clock"] .. " " .. time .. " " .. date
 
 		window:set_left_status(wezterm.format({
+			{ Background = { Color = palette["bg4"] } },
 			{ Foreground = { Color = charge_color } },
 			{ Text = " dift " .. heart .. "  " },
 		}))
 		--
 		window:set_right_status(wezterm.format({
+			{ Foreground = { Color = palette["bg1"] } },
+			{ Text = hard_divider },
+			{ Background = { Color = palette["bg1"] } },
 			{ Foreground = { Color = "#98d4e7" } },
-			{ Text = directory },
+			{ Text = " " .. directory },
+			{ Foreground = { Color = palette["bg3"] } },
+			{ Text = hard_divider },
 			"ResetAttributes",
-			{ Text = soft_divider },
+			{ Background = { Color = palette["bg3"] } },
 			{ Foreground = { Color = "#f2f2f3" } },
-			{ Text = process },
+			{ Text = " " .. process },
+			{ Foreground = { Color = palette["bg4"] } },
+			{ Text = hard_divider },
 			"ResetAttributes",
-			{ Text = soft_divider },
+			{ Background = { Color = palette["bg4"] } },
 			{ Foreground = { Color = charge_color } },
-			{ Text = battery .. " " },
+			{ Text = " " .. battery .. " " },
 			{ Text = charge_percent .. " " },
 			{ Text = state_suffix },
 			{ Foreground = { Color = charge_color } },

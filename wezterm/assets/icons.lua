@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line
 local wezterm = require("wezterm")
 
 ---@type table<string, string>
@@ -7,12 +8,14 @@ local nf = wezterm.nerdfonts
 local dividers = {
 	["hard_right"] = nf.pl_right_hard_divider,
 	["hard_left"] = nf.pl_left_hard_divider,
+	["hard_right_inverse"] = nf.pl_right_hard_divider_inverse,
+	["hard_left_inverse"] = nf.pl_left_hard_divider_inverse,
 	["heart"] = nf.oct_heart,
 	["soft_right"] = nf.pl_right_soft_divider,
 	["soft_left"] = nf.pl_left_soft_divider,
 }
 
--- Keep sorted by name
+---Keep sorted alphabetically by name
 ---@type table<string, string>
 local dev_icons = {
 	["admin"] = nf.oct_shield,
@@ -59,6 +62,18 @@ local dev_icons = {
 }
 
 local tab_numbers = {
+	number = {
+		[1] = nf.md_numeric_1_circle,
+		[2] = nf.md_numeric_2_circle,
+		[3] = nf.md_numeric_3_circle,
+		[4] = nf.md_numeric_4_circle,
+		[5] = nf.md_numeric_5_circle,
+		[6] = nf.md_numeric_6_circle,
+		[7] = nf.md_numeric_7_circle,
+		[8] = nf.md_numeric_8_circle,
+		[9] = nf.md_numeric_9_circle,
+		[10] = nf.md_numeric_10_circle,
+	},
 	sub_idx = {
 		"₁",
 		"₂",

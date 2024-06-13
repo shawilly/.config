@@ -1,10 +1,13 @@
+---@diagnostic disable
 local wezterm = require("wezterm")
+local palette = require("theme.ponokai.palette")
 
 local config = {}
 
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
+---@diagnostic enable
 
 -- window
 config.native_macos_fullscreen_mode = true
@@ -37,8 +40,21 @@ config.automatically_reload_config = true
 
 -- colour
 config.color_scheme = "Catppuccin Mocha"
+config.colors = {
+	tab_bar = {
+		---@type string
+		background = palette["bg0"],
+		inactive_tab = {
+			---@type string
+			bg_color = palette["red"],
+			---@type string
+			fg_color = palette["bg0"],
+		},
+	},
+}
 
 -- font
+---@type table<string, string>
 config.font = wezterm.font({
 	family = "JetBrainsMono Nerd Font",
 	weight = "DemiBold",
@@ -52,6 +68,7 @@ config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
 
 -- keys
+---@type table<string, table<string, string>>
 config.keys = require("config.keys")
 
 return config
