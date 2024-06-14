@@ -3,3 +3,5 @@ github-copilot/
 
 lazy-lock.json
 lazyvim.json
+
+wezterm/config/secrets.lua
