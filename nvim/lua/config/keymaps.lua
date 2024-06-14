@@ -44,10 +44,14 @@ keymap.set("n", "<C-S-l>", "<C-w>>")
 keymap.set("n", "<C-S-k>", "<C-w>+")
 keymap.set("n", "<C-S-j>", "<C-w>-")
 
-keymap.set("n", "<left>", '<cmd>echo "Use h ya idiot"<CR>')
-keymap.set("n", "<right>", '<cmd>echo "Use l ya idiot"<CR>')
-keymap.set("n", "<up>", '<cmd>echo "Use k ya idiot"<CR>')
-keymap.set("n", "<down>", '<cmd>echo "Use j ya idiot"<CR>')
+keymap.set(
+	"n",
+	"<left>",
+	"<cmd>echo \"We don't do this because it's easy. We do this because we thought it would be easy.\"<CR>"
+)
+keymap.set("n", "<right>", '<cmd>echo "javascript"<CR>')
+keymap.set("n", "<up>", '<cmd>echo "ya old dog"<CR>')
+keymap.set("n", "<down>", '<cmd>echo "do it for them <3"<CR>')
 
 -- LSP
 vim.keymap.set("n", "<leader>lr", ":LspRestart")

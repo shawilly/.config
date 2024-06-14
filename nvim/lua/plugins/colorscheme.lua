@@ -3,6 +3,7 @@ return {
 		"shawilly/ponokai",
 		priority = 1000,
 		config = function()
+			vim.g.ponokai_transparent_background = true
 			vim.g.ponokai_enable_italic = "1"
 			vim.g.ponokai_style = "default"
 			vim.cmd.colorscheme("ponokai")
