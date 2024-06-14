@@ -13,10 +13,9 @@ local charge_colors = colors.charge_colors
 local dev_icons = icons.dev_icons
 ---@type table<string, string>
 local battery_icons = icons.battery
+---@type table<string, string>
+local dividers = icons.dividers
 ---@type string
-local hard_divider = " " .. icons.dividers["hard_right"]
----@type string
-local heart = icons.dividers["heart"]
 
 local basename = function(s)
 	---@type string
@@ -59,7 +58,7 @@ local update_status = function(window, pane)
 		end
 
 		---@type string
-		local date = wezterm.strftime("%m/%d/%Y")
+		local date = wezterm.strftime("%h %d "):lower()
 		---@type string
 		local time = wezterm.strftime("%H:%M")
 
@@ -80,38 +79,33 @@ local update_status = function(window, pane)
 		---@type string
 		local date_time = icons.dev_icons["clock"] .. " " .. time .. " " .. date
 
-		window:set_left_status(wezterm.format({
-			{ Background = { Color = palette["bg4"] } },
-			{ Foreground = { Color = charge_color } },
-			{ Text = " dift " .. heart .. "  " },
-		}))
-		--
 		window:set_right_status(wezterm.format({
 			{ Foreground = { Color = palette["bg1"] } },
-			{ Text = hard_divider },
+			{ Text = dividers["left_circle"] },
 			{ Background = { Color = palette["bg1"] } },
-			{ Foreground = { Color = "#98d4e7" } },
-			{ Text = " " .. directory },
+			{ Foreground = { Color = palette["purple_100"] } },
+			{ Text = " " .. directory .. " " },
 			{ Foreground = { Color = palette["bg3"] } },
-			{ Text = hard_divider },
-			"ResetAttributes",
+			{ Text = dividers["hard_right"] },
 			{ Background = { Color = palette["bg3"] } },
-			{ Foreground = { Color = "#f2f2f3" } },
-			{ Text = " " .. process },
+			{ Foreground = { Color = palette["purple_300"] } },
+			{ Text = " " .. process .. " " },
 			{ Foreground = { Color = palette["bg4"] } },
-			{ Text = hard_divider },
-			"ResetAttributes",
+			{ Text = dividers["hard_right"] },
 			{ Background = { Color = palette["bg4"] } },
 			{ Foreground = { Color = charge_color } },
 			{ Text = " " .. battery .. " " },
 			{ Text = charge_percent .. " " },
-			{ Text = state_suffix },
+			{ Text = state_suffix .. " " },
 			{ Foreground = { Color = charge_color } },
-			{ Text = hard_divider },
-			"ResetAttributes",
+			{ Text = dividers["hard_right"] },
 			{ Background = { Color = charge_color } },
-			{ Foreground = { Color = "black" } }, -- Optional: Change text color for better contrast
-			{ Text = date_time .. " " },
+			{ Foreground = { Color = palette["bg0"] } },
+			{ Text = date_time },
+			{ Background = { Color = palette["bg0"] } },
+			{ Foreground = { Color = charge_color } },
+			{ Text = dividers["right_circle"] },
+			{ Foreground = { Color = charge_color } },
 		}))
 	end
 end

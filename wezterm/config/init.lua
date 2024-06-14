@@ -15,8 +15,8 @@ config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.60
 config.macos_window_background_blur = 22
 config.window_padding = {
-	left = 0,
-	right = 0,
+	left = 10,
+	right = 10,
 	top = 0,
 	bottom = 0,
 }
@@ -33,7 +33,6 @@ local launch_menu = {
 	{ label = "Fish", args = { "/opt/homebrew/bin/fish", "-l" } },
 	{ label = "Nushell", args = { "/opt/homebrew/bin/nu", "-l" } },
 	{ label = "Zsh", args = { "zsh", "-l" } },
-	{ label = "Pwsh", args = { "/usr/local/bin/pwsh", "-NoLogo" } },
 }
 config.launch_menu = launch_menu
 config.automatically_reload_config = true
@@ -66,6 +65,7 @@ config.bold_brightens_ansi_colors = true
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
+config.tab_bar_at_bottom = true
 
 -- keys
 ---@type table<string, table<string, string>>

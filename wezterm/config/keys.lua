@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
-local backdrops = require("custom.gif_background.backdrops")
+local backdrops = require("custom.backdrop")
 
 local keys = {
 	-- copy and paste from the standard register

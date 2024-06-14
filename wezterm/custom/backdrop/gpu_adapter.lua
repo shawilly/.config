@@ -1,5 +1,7 @@
+---@diagnostic disable
 local wezterm = require("wezterm")
-local platform = require("custom.gif_background.platform")()
+local platform = require("custom.backdrop.platform")()
+---@diagnostic enable
 
 ---@alias WeztermGPUBackend 'Vulkan'|'Metal'|'Gl'|'Dx12'
 ---@alias WeztermGPUDeviceType 'DiscreteGpu'|'IntegratedGpu'|'Cpu'|'Other'

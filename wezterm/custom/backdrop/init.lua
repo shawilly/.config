@@ -1,5 +1,7 @@
+---@diagnostic disable
 local wezterm = require("wezterm")
-local platform = require("custom.gif_background.platform")()
+local platform = require("custom.backdrop.platform")()
+---@diagnostic enable
 
 -- Seeding random numbers before generating for use
 -- Known issue with lua math library
@@ -64,6 +66,7 @@ function BackDrops:choices()
 	local choices = {}
 	for idx, file in ipairs(self.files) do
 		local name = file:match("([^" .. PATH_SEP .. "]+)$")
+
 		table.insert(choices, {
 			id = tostring(idx),
 			label = name,
