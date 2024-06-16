@@ -26,6 +26,7 @@ local dev_icons = {
 	["cargo"] = nf.dev_rust,
 	["Charging"] = nf.fa_plug,
 	["clock"] = nf.md_clock_outline,
+	["commit"] = nf.md_source_commit,
 	["curl"] = nf.mdi_flattr,
 	["default"] = nf.fa_terminal,
 	["docker"] = nf.linux_docker,

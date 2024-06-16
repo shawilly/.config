@@ -1,8 +1,13 @@
+---@diagnostic disable
 local wezterm = require("wezterm")
-local act = wezterm.action
 local backdrops = require("custom.backdrop")
+local act = wezterm.action
+---@diagnostic enable
 
+---@type table<string, table<string, string>>
 local keys = {
+	---@diagnostic disable
+	--- disbaled because of the `wezterm.action type is not defined` error
 	-- copy and paste from the standard register
 	{ key = "c", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard") },
 	{ key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
@@ -40,5 +45,6 @@ local keys = {
 		action = wezterm.action.ReloadConfiguration,
 	},
 }
+---@diagnostic enable
 
 return keys

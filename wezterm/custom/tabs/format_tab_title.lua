@@ -4,8 +4,9 @@ local icons = require("assets.icons")
 local secrets = require("config.secrets")
 ---@diagnostic enable
 
+-- TODO: use secrets to use correct urls for ssh
 ---@type string
-local ecck_ssh_url = secrets["ECCK_SSH_URL"]
+local _ecck_ssh_url = secrets["ECCK_SSH_URL"]
 
 ---@type table<string, string>
 local palette = require("theme.ponokai.palette")
@@ -56,18 +57,31 @@ local function basename(s)
 	return string.gsub(s, "(.*[/\\])(.*)", "%2")
 end
 
-local color_names = { "red", "orange", "yellow", "green", "blue", "purple" }
-
-local function get_color(index, active)
-	---@type number
-	local color_index = ((index - 1) % #color_names) + 1
-	local color_name = color_names[color_index] .. (active and "_900" or "_300")
-
-	return palette[color_name]
-end
-
 local editors = { "nvim", "vim", "vi" }
-local shells = { "ssh", "zsh", "lazygit", "bash", "fish" }
+local shells = { "git", "ssh", "zsh", "lazygit", "bash", "fish" }
+local runners = { "node", "cargo", "npm", "yarn", "go", "python", "ruby", "rake", "make" }
+
+local process_colors = {
+	["lazygit"] = "purple",
+	["git"] = "purple",
+	["nvim"] = "green",
+	["vim"] = "green",
+	["vi"] = "green",
+	["node"] = "green",
+	["zsh"] = "blue",
+	["bash"] = "blue",
+	["fish"] = "blue",
+	["yarn"] = "blue",
+	["go"] = "blue",
+	["npm"] = "red",
+	["ruby"] = "red",
+	["rake"] = "red",
+	["cargo"] = "orange",
+	["make"] = "orange",
+	["ssh"] = "yellow",
+	["python"] = "yellow",
+	["default"] = "bg4",
+}
 
 --- Check if an item is in a list
 ---@param item any
@@ -93,37 +107,55 @@ local format_tab_title = function(tab, tabs, _panes, _config, _hover, max_width)
 	---@type string
 	local pane_title = tab.active_pane.title:gsub(exec_name, "")
 
+	print(exec_name)
+	print(process_name)
+	print(pane_title)
+
 	local title_with_icon = dev_icons[exec_name] or dev_icons["default"]
 
 	if string.find(pane_title, "No Name") and exec_name == "nvim" then
 		title_with_icon = title_with_icon
+	--TODO: use secrets to use correct urls for ssh
 	elseif string.find(pane_title, "ubuntu@ip") then
 		title_with_icon = title_with_icon .. " ecck"
 	elseif is_in_list(exec_name, editors) then
 		title_with_icon = title_with_icon .. " " .. pane_title:gsub("^(%S+)%s+(%d+/%d+) %- nvim", " %2 %1")
 	elseif is_in_list(exec_name, shells) then
-		---@type string
-		title_with_icon = title_with_icon .. " " .. pane_title:gsub(exec_name, "")
-		title_with_icon = title_with_icon:gsub("~/", "")
-		title_with_icon = title_with_icon:gsub(".config", "cnf")
+		if string.find(pane_title, "ggwp") then
+			title_with_icon = dev_icons["commit"]
+		else
+			---@type string
+			title_with_icon = title_with_icon .. " " .. pane_title:gsub(exec_name, "")
+			title_with_icon = title_with_icon:gsub("~/", "")
+			title_with_icon = title_with_icon:gsub(".config", "cnf")
+		end
+	elseif is_in_list(exec_name, runners) then
+		if exec_name == "node" then
+			title_with_icon = title_with_icon .. pane_title:gsub("npm run", "")
+		else
+			title_with_icon = title_with_icon .. " " .. pane_title
+		end
 	else
 		title_with_icon = title_with_icon .. " " .. pane_title
 	end
 
-	local tab_main_color = get_color(tab.tab_index + 1, tab.is_active)
+	local tab_main_color = tab.is_active and palette["bg4"] or palette["bg2"]
 	local start_of_tab_icon_color = tab_main_color
 	local start_of_tab_bg = tab_main_color
 
 	if tab.tab_index == 0 then
-		start_of_tab_bg = palette["bg0"]
+		start_of_tab_bg = "None"
 	else
 		start_of_tab_icon_color = palette["bg0"]
 	end
 
-	local number_icon = tab.tab_index < 10 and tab_numbers.number[tab.tab_index + 1] or to_roman(tab.tab_index + 1)
-	local number_icon_color = get_color(tab.tab_index + 1, tab.is_active == false)
+	local active_process_color = process_colors[exec_name] .. "_900" or palette["bg0"]
+	local inactive_process_color = process_colors[exec_name] .. "_300" or palette["fg"]
 
-	local font_color = tab.is_active and palette["bg0"] or palette["bg4"]
+	local number_icon = tab.tab_index < 10 and tab_numbers.number[tab.tab_index + 1] or to_roman(tab.tab_index + 1)
+	local number_icon_color = palette[tab.is_active and active_process_color or inactive_process_color]
+
+	local font_color = tab.is_active and palette["fg"] or palette["grey_dim"]
 	local font_weight = "Half"
 
 	if tab.is_active then
