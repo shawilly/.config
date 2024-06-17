@@ -106,56 +106,46 @@ local format_tab_title = function(tab, tabs, _panes, _config, _hover, max_width)
 	local exec_name = basename(process_name):gsub("%.exe$", "")
 	---@type string
 	local pane_title = tab.active_pane.title:gsub(exec_name, "")
+	---@type string
+	local icon = dev_icons[exec_name] or dev_icons["default"]
+	---@type string
+	local title = ""
 
-	print(exec_name)
-	print(process_name)
-	print(pane_title)
-
-	local title_with_icon = dev_icons[exec_name] or dev_icons["default"]
-
-	if string.find(pane_title, "No Name") and exec_name == "nvim" then
-		title_with_icon = title_with_icon
 	--TODO: use secrets to use correct urls for ssh
-	elseif string.find(pane_title, "ubuntu@ip") then
-		title_with_icon = title_with_icon .. " ecck"
+	if string.find(pane_title, "ubuntu@ip") then
+		title = " ecck"
 	elseif is_in_list(exec_name, editors) then
-		title_with_icon = title_with_icon .. " " .. pane_title:gsub("^(%S+)%s+(%d+/%d+) %- nvim", " %2 %1")
+		title = pane_title:gsub("^(%S+)%s+(%d+/%d+) %- nvim", " %2 %1")
 	elseif is_in_list(exec_name, shells) then
 		if string.find(pane_title, "ggwp") then
-			title_with_icon = dev_icons["commit"]
+			icon = dev_icons["commit"]
 		else
 			---@type string
-			title_with_icon = title_with_icon .. " " .. pane_title:gsub(exec_name, "")
-			title_with_icon = title_with_icon:gsub("~/", "")
-			title_with_icon = title_with_icon:gsub(".config", "cnf")
+			title = pane_title:gsub(exec_name, "")
+			title = title:gsub("~/", "")
+			title = title:gsub(".config", "cnf")
 		end
-	elseif is_in_list(exec_name, runners) then
-		if exec_name == "node" then
-			title_with_icon = title_with_icon .. pane_title:gsub("npm run", "")
-		else
-			title_with_icon = title_with_icon .. " " .. pane_title
-		end
+	elseif is_in_list(exec_name, runners) and exec_name == "node" then
+		title = pane_title:gsub("npm run ", "")
 	else
-		title_with_icon = title_with_icon .. " " .. pane_title
+		title = pane_title
 	end
+
+	-- Truncate the title to fit the tab width
+	---@type string
+	title = wezterm.truncate_right(title, max_width - 1):gsub("(.*)%s.*$", "%1")
 
 	local tab_main_color = tab.is_active and palette["bg4"] or palette["bg2"]
-	local start_of_tab_icon_color = tab_main_color
+	local start_of_tab_icon_color = tab.tab_index ~= 0 and palette["bg0"] or tab_main_color
 	local start_of_tab_bg = tab_main_color
-
-	if tab.tab_index == 0 then
-		start_of_tab_bg = "None"
-	else
-		start_of_tab_icon_color = palette["bg0"]
-	end
-
 	local active_process_color = process_colors[exec_name] .. "_900" or palette["bg0"]
 	local inactive_process_color = process_colors[exec_name] .. "_300" or palette["fg"]
+
+	local font_color = tab.is_active and palette["fg"] or palette["grey_dim"]
 
 	local number_icon = tab.tab_index < 10 and tab_numbers.number[tab.tab_index + 1] or to_roman(tab.tab_index + 1)
 	local number_icon_color = palette[tab.is_active and active_process_color or inactive_process_color]
 
-	local font_color = tab.is_active and palette["fg"] or palette["grey_dim"]
 	local font_weight = "Half"
 
 	if tab.is_active then
@@ -165,11 +155,10 @@ local format_tab_title = function(tab, tabs, _panes, _config, _hover, max_width)
 	local is_last_tab = tab.tab_index == #tabs - 1
 	local is_first_tab = tab.tab_index == 0
 
-	local start_of_tab_icon = is_first_tab and dividers["left_circle"] or dividers["hard_left"]
+	local start_of_tab_icon = is_first_tab and "" or dividers["hard_left"]
 	local end_of_tab_icon = is_last_tab and dividers["right_circle"] or dividers["hard_left"]
 
 	---@type string
-	local title = " " .. wezterm.truncate_right(title_with_icon, max_width - 6) .. " "
 
 	local ponokai_tab = {
 		{ Background = { Color = start_of_tab_bg } },
@@ -177,8 +166,17 @@ local format_tab_title = function(tab, tabs, _panes, _config, _hover, max_width)
 		{ Text = start_of_tab_icon },
 		{ Background = { Color = tab_main_color } },
 		{ Attribute = { Intensity = font_weight } },
+		{ Foreground = { Color = tab_main_color } },
+		{ Text = "͘" },
 		{ Foreground = { Color = number_icon_color } },
-		{ Text = " " .. number_icon },
+		{ Foreground = { Color = number_icon_color } },
+		{ Text = number_icon },
+		{ Foreground = { Color = tab_main_color } },
+		{ Text = "͘" },
+		{ Foreground = { Color = number_icon_color } },
+		{ Text = icon },
+		{ Foreground = { Color = tab_main_color } },
+		{ Text = "͘" },
 		{ Foreground = { Color = font_color } },
 		{ Text = title },
 		{ Foreground = { Color = tab_main_color } },

@@ -83,12 +83,12 @@ local update_status = function(window, pane)
 			{ Foreground = { Color = palette["bg2"] } },
 			{ Text = dividers["left_circle"] },
 			{ Background = { Color = palette["bg2"] } },
-			{ Foreground = { Color = palette["blue_300"] } },
+			{ Foreground = { Color = palette["bg9"] } },
 			{ Text = " " .. directory .. " " },
 			{ Foreground = { Color = palette["bg4"] } },
 			{ Text = dividers["hard_right"] },
 			{ Background = { Color = palette["bg4"] } },
-			{ Foreground = { Color = palette["green_300"] } },
+			{ Foreground = { Color = palette["fg"] } },
 			{ Text = " " .. process .. " " },
 			{ Foreground = { Color = palette["bg5"] } },
 			{ Text = dividers["hard_right"] },
@@ -102,10 +102,6 @@ local update_status = function(window, pane)
 			{ Background = { Color = charge_color } },
 			{ Foreground = { Color = palette["bg0"] } },
 			{ Text = date_time },
-			{ Background = { Color = palette["bg0"] } },
-			{ Foreground = { Color = charge_color } },
-			{ Text = dividers["right_circle"] },
-			{ Foreground = { Color = charge_color } },
 		}))
 	end
 end
