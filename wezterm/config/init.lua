@@ -14,7 +14,7 @@ local palette = require("theme.ponokai.palette")
 -- window
 config.native_macos_fullscreen_mode = false
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.60
+config.window_background_opacity = 0.80
 config.macos_window_background_blur = 22
 config.window_padding = {
 	left = 10,
@@ -84,7 +84,7 @@ config.bold_brightens_ansi_colors = true
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
-config.tab_max_width = 30
+config.tab_max_width = 60
 
 -- keys
 ---@type table<string, table<string, string>>

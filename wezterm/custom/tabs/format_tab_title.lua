@@ -1,4 +1,5 @@
 ---@diagnostic disable
+---
 local wezterm = require("wezterm")
 local icons = require("assets.icons")
 local secrets = require("config.secrets")
@@ -99,17 +100,17 @@ end
 
 --- Format tab title with icons, colors, and dividers
 ---@return table
-local format_tab_title = function(tab, tabs, _panes, _config, _hover, max_width)
+local format_tab_title = function(tab, tabs, _panes, _config, _hover, _max_width)
 	---@type string
 	local process_name = tab.active_pane.foreground_process_name
 	---@type string
-	local exec_name = basename(process_name):gsub("%.exe$", "")
+	local exec_name = basename(process_name)
 	---@type string
 	local pane_title = tab.active_pane.title:gsub(exec_name, "")
 	---@type string
 	local icon = dev_icons[exec_name] or dev_icons["default"]
 	---@type string
-	local title = ""
+	local title = " "
 
 	--TODO: use secrets to use correct urls for ssh
 	if string.find(pane_title, "ubuntu@ip") then
@@ -117,8 +118,8 @@ local format_tab_title = function(tab, tabs, _panes, _config, _hover, max_width)
 	elseif is_in_list(exec_name, editors) then
 		title = pane_title:gsub("^(%S+)%s+(%d+/%d+) %- nvim", " %2 %1")
 	elseif is_in_list(exec_name, shells) then
-		if string.find(pane_title, "ggwp") then
-			icon = dev_icons["commit"]
+		if string.find(pane_title, "ggwp") or string.find(exec_name, "git") then
+			icon = dev_icons["commit"] .. " " .. exec_name
 		else
 			---@type string
 			title = pane_title:gsub(exec_name, "")
@@ -131,9 +132,12 @@ local format_tab_title = function(tab, tabs, _panes, _config, _hover, max_width)
 		title = pane_title
 	end
 
-	-- Truncate the title to fit the tab width
-	---@type string
-	title = wezterm.truncate_right(title, max_width - 1):gsub("(.*)%s.*$", "%1")
+	-- if title:len() > 0 then
+	-- 	title = title:sub(1, 20) .. "..."
+	-- 	-- Truncate the title to fit the tab width
+	-- 	---@type string
+	-- 	title = title:match("^[^%s]+")
+	-- end
 
 	local tab_main_color = tab.is_active and palette["bg4"] or palette["bg2"]
 	local start_of_tab_icon_color = tab.tab_index ~= 0 and palette["bg0"] or tab_main_color
@@ -157,8 +161,6 @@ local format_tab_title = function(tab, tabs, _panes, _config, _hover, max_width)
 
 	local start_of_tab_icon = is_first_tab and "" or dividers["hard_left"]
 	local end_of_tab_icon = is_last_tab and dividers["right_circle"] or dividers["hard_left"]
-
-	---@type string
 
 	local ponokai_tab = {
 		{ Background = { Color = start_of_tab_bg } },
