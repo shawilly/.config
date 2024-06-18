@@ -23,7 +23,7 @@ return {
 					builtin.find_files({
 						no_ignore = false,
 						hidden = true,
-						truncate = true,
+						path_display = "truncate",
 					})
 				end,
 				desc = "Lists files in your current working directory, respects .gitignore",
