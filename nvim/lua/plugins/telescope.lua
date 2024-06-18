@@ -41,6 +41,10 @@ return {
 			builtin.find_files({ path_display = { "truncate", shorten = 3 } })
 		end, { desc = "[S]earch [F]iles" })
 
+		vim.keymap.set("n", "<leader>shf", function()
+			builtin.find_files({ hidden = true, path_display = { "truncate", shorten = 3 } })
+		end, { desc = "[S]earch w/ [H]idden [F]iles" })
+
 		vim.keymap.set("n", "<leader>/", function()
 			builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
 				winblend = 10,
