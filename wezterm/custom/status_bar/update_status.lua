@@ -49,16 +49,6 @@ local update_status = function(window, pane)
 		---@type string
 		charge_color = charge_colors[state][charge_key]
 
-		local state_suffix = ""
-		if state == "Charging" and b.time_to_full then
-			---@type string
-			state_suffix = icons.dev_icons[state] .. " " .. math.ceil(b.time_to_full / 60) .. "m"
-		elseif state == "Discharging" and b.time_to_empty then
-			state_suffix = math.ceil(b.time_to_empty / 60) .. "m"
-		end
-
-		---@type string
-		local date = wezterm.strftime("%h %d "):lower()
 		---@type string
 		local time = wezterm.strftime("%H:%M")
 
@@ -67,36 +57,25 @@ local update_status = function(window, pane)
 		local cwd = pane:get_current_working_dir()
 
 		local current_working_directory = basename(cwd.path) or ""
-		local current_command = basename(pane:get_foreground_process_name()) or ""
-
-		---@type string
-		local cmd_icon = dev_icons[current_command] or dev_icons["default"]
 
 		---@type string
 		local directory = dev_icons["folder"] .. " " .. current_working_directory
-		local process = cmd_icon .. "  " .. current_command
 
 		---@type string
-		local date_time = icons.dev_icons["clock"] .. " " .. time .. " " .. date
+		local date_time = icons.dev_icons["clock"] .. " " .. time .. " "
 
 		window:set_right_status(wezterm.format({
-			{ Foreground = { Color = palette["bg2"] } },
+			{ Foreground = { Color = palette["bg6"] } },
 			{ Text = dividers["left_circle"] },
-			{ Background = { Color = palette["bg2"] } },
-			{ Foreground = { Color = palette["bg9"] } },
-			{ Text = " " .. directory .. " " },
-			{ Foreground = { Color = palette["bg4"] } },
-			{ Text = dividers["hard_right"] },
-			{ Background = { Color = palette["bg4"] } },
+			{ Background = { Color = palette["bg6"] } },
 			{ Foreground = { Color = palette["fg"] } },
-			{ Text = " " .. process .. " " },
+			{ Text = " " .. directory .. " " },
 			{ Foreground = { Color = palette["bg5"] } },
 			{ Text = dividers["hard_right"] },
 			{ Background = { Color = palette["bg5"] } },
 			{ Foreground = { Color = charge_color } },
 			{ Text = " " .. battery .. " " },
 			{ Text = charge_percent .. " " },
-			{ Text = state_suffix .. " " },
 			{ Foreground = { Color = charge_color } },
 			{ Text = dividers["hard_right"] },
 			{ Background = { Color = charge_color } },

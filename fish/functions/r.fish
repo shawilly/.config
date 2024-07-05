@@ -1,4 +1,3 @@
 function r --wraps=fish --description 'alias r=fish'
-  fish $argv
-        
+    clear && fish $argv
 end

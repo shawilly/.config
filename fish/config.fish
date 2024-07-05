@@ -45,15 +45,15 @@ set -g fish_pager_color_description $comment
 if status is-interactive
     function fish_greeting
         clear
-
-        set json (curl -s "https://api.quotable.io/random")
-        set quote (echo $json | jq -r '.content')
-        set author (echo $json | jq -r '.author')
-        echo
-        set_color yellow
-        echo $quote
-        set_color normal
-        echo - $author
+        #
+        #        set json (curl -s "https://api.quotable.io/random")
+        #        set quote (echo $json | jq -r '.content')
+        #        set author (echo $json | jq -r '.author')
+        #        echo
+        #        set_color yellow
+        #        echo $quote
+        #        set_color normal
+        #        echo - $author
     end
 end
 
